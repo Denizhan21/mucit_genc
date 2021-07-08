@@ -9,6 +9,10 @@ class Club extends Model
     protected $table = 'clubs';
     protected $guarded = [];
 
+    public function id() {
+        return $this->id;
+    }
+
 
     public function project() {
         return $this->hasMany('App\Project','club_id');

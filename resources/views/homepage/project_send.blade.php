@@ -119,8 +119,14 @@
                                  @php
                                  $clubs = \App\Club::where('confirmation','=','1')->get();
 
-                                 $clubs_confirmation = \App\Club_user::where('user_id','=',\Illuminate\Support\Facades\Auth::id())->where('')->get();
+                                 $clubs_confirmation = \App\Club_user::where('user_id','=',\Illuminate\Support\Facades\Auth::id())->get();
                                  @endphp
+                                    @foreach($clubs as $club)
+                                        <option value="{{$club->id}}">{{$club->name}}</option>
+                                    @endforeach
+                                    @foreach($clubs_confirmation as $club_confirmations)
+                                        <option value="{{$club_confirmations->clubs->id}}">{{$club_confirmations->clubs->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
