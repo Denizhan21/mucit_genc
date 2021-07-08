@@ -11,7 +11,7 @@
                         <li><a class="box-btn-fullscreen" href="#"></a></li>
                     </ul>
                 </div>
-                {!! Form::model($club,['route'=>['users.update',$club->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}
+                {!! Form::model($club,['route'=>['clubs.update',$club->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}
                 <div class="box-body">
 
                     <div class="form-group">
@@ -36,7 +36,7 @@
                             <div class="controls">
                                 <select name="teacher" id="select" class="form-control">
                                     @foreach($teacher as $teachers)
-                                        <option value="{{$teachers->name}}" {{$club->teacher==$teachers->name?'selected':''}}>{{$teachers->name}}</option>
+                                        <option value="{{$teachers->id}}" {{$club->teacher==$teachers->id?'selected':''}}>{{$teachers->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -71,6 +71,18 @@
                         </div>
                     </div>
 
+                    <div class="demo-radio-button">
+                        <div class="form-group">
+                            <label>Kulüp Harici Proje Gönderme:</label>
+                            <div class="controls">
+                                <select name="confirmation" id="select" class="form-control">
+                                    <option {{$club->confirmation==1?'selected':''}} value="1">Açık</option>
+                                    <option {{$club->confirmation==0?'selected':''}} value="0">Kapalı</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="example_input_full_name">Mecvut Logo:</label>
                         <img width="200" src="/{{$club->logo}}" alt="{{$club->name}}">
@@ -78,10 +90,13 @@
 
                     <div class="form-group">
                         <label for="example_input_full_name">Yeni Logo:</label>
-                        <input id="name" type="file" class="form-control"  name="logo" required>
+                        <input id="name" type="file" class="form-control"  name="logo">
                     </div>
 
                     <textarea name="description" style="height: 300px;" class="my-editor">{!! $club->description !!}</textarea>
+
+
+                    <textarea name="content" style="height: 300px;" class="my-editor">{{$club->content}}</textarea>
 
 
                     <div class="box-footer">

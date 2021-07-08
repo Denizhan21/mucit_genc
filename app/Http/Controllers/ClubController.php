@@ -137,9 +137,41 @@ class ClubController extends Controller
      * @param  \App\Club  $club
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Club $club)
+    public function update(Request $request, $id)
     {
-        //
+       $club = Club::findOrFail($id);
+        $club->name         = request('name');
+        $club->teacher      = request('teacher');
+        $club->status       = request('status');
+        $club->subject      = request('subject');
+        $club->description  = request('description');
+        $club->school_id    = request('school_id');
+        $club->confirmation = request('confirmation');
+        $club->text         = request('text');
+        $club->content      = request('content');
+
+        if (request()->hasFile('logo')) {
+            $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('logo');
+            $dosya_adi = 'logo'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $club->logo = $dosya_yolu;
+            }
+        }
+
+        $club->save();
+
+        if ($club) {
+
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('nos', 'nos');
+        }
     }
 
     /**
