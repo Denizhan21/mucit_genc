@@ -144,4 +144,26 @@ class ActivityController extends Controller
             return redirect()->back()->with('no', 'no');
         }
     }
+
+
+    public function onayla($id) {
+        $activity = Activity::findOrFail($id);
+        $activity->status = 1;
+        $activity->save();
+        if ($activity) {
+            return redirect()->back()->with('durumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumno', 'kullanıcı eklendi');
+        }
+    }
+    public function onaykaldir($id) {
+        $activity = Activity::findOrFail($id);
+        $activity->status = 0;
+        $activity->save();
+        if ($activity) {
+            return redirect()->back()->with('durumumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumumno', 'kullanıcı eklendi');
+        }
+    }
 }

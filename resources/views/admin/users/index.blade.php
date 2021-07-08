@@ -81,6 +81,15 @@
         <a class="btn btn-warning" href="{{ route('export') }}">Kullanıcıları dışa aktar</a>
     </form>
     <hr>
+
+    @php
+        $deg = 'denizhan';
+         $user_mails = \App\User::where('email', 'like', "%$deg%")->first();
+
+    echo ($user_mails);
+    @endphp
+
+
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
@@ -131,6 +140,15 @@
 @endsection
 @section('js')
     <script>
+        @if (session('alertsd'))
+        swal({
+            title:"Başarılı",
+            text:"Mükerrer Kayıt",
+            type: "success",
+            timer:2000,
+            showConfirmButton: false
+        });
+        @endif
         @if (session('alert'))
         swal({
             title:"Başarılı",

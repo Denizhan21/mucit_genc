@@ -14,6 +14,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Başlık</th>
+                                <th>Durum</th>
                                 <th>Yüklenme Zamanı</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
@@ -22,6 +23,17 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$activity->title}}</td>
+                                    <td>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
+                                        @if($activity->status=='0')
+                                            <a href="{{route('activities.onayla',$activity->id)}}"><span class="label label-success">Onayla</span></a>
+                                        @else
+                                            <a href="{{route('activities.onaykaldir',$activity->id)}}"><span class="label label-info">Onay Kaldır</span></a>
+                                        @endif
+                                        @else
+                                         {{$activity->status==1?'Aktif':''}}   {{$activity->status==0?'Pasif':''}}
+                                        @endif
+                                    </td>
                                    <td>{{$activity->created_at}}</td>
                                     <td><a class="btn btn-xs btn-warning" href="{{route('activities.edit',$activity->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
                                     <td>

@@ -27,6 +27,7 @@
                             </select>
                         </div>
                     </div>
+                    @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
                     <div class="form-group">
                         <label>Durum:</label>
                         <div class="controls">
@@ -36,6 +37,9 @@
                             </select>
                         </div>
                     </div>
+                    @else
+                        <input type="hidden" name="status" value="{{$activity->status}}">
+                    @endif
                     <div class="form-group">
                         <label for="example_input_full_name">Mecvut Kapak Fotoğrafı:</label>
                         <img width="200" src="/{{$activity->photo}}" alt="{{$activity->title}}">

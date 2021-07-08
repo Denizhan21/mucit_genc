@@ -147,3 +147,8 @@ Route::get('migrate', function () {
     return 'migrate gerçekleşti';
 });
 
+
+//Duyuru Onaylama ve Onay Kaldırma İşlemleri
+Route::get('onayla/{id}','ActivityController@onayla')->name('activities.onayla');
+Route::get('onaykaldir/{id}','ActivityController@onaykaldir')->name('activities.onaykaldir');
+
