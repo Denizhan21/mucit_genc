@@ -354,7 +354,7 @@
                                         @endphp</div>2
                                 </div>
                                 <div class="blog-content">
-                                    <h3 class="blog-title"><a href="single-blog.html">{{$activity->title}} </a> ({{$activity->type}})</h3>
+                                    <h3 class="blog-title"><a href="/activities/{{$activity->id}}">{{$activity->title}} </a> ({{$activity->type}})</h3>
 
                                 </div>
                             </div>
