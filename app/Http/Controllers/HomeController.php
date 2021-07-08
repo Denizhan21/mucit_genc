@@ -48,6 +48,8 @@ class HomeController extends Controller
         $user = Auth::id();
 
 
+
+
         $clubs_club = Club::where('confirmation','=',0)->get();
 
 
