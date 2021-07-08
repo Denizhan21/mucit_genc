@@ -19,6 +19,28 @@
                         <input id="name" type="text" class="form-control"  name="name" required value="{{$club->name}}">
                     </div>
 
+                    @php
+                        $talepgrup = [
+                            'drive'=>'Drive',
+                            'youtube'=>'YouTube',
+                            ];
+                    @endphp
+                    <div class="form-group">
+                        <label>Tanıtım Dosyası Tipini Seçiniz:</label>
+                        <div class="controls">
+                            <select name="type" id="select" class="form-control">
+                                @foreach($talepgrup as $key=>$alan)
+                                    <option {{$alan==$club->type?'selected':''}} value="{{$alan}}">{{$alan}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="example_input_full_name">Kulüp Tanıtım Videosu/PDF si(Drive Linki Olarak Yükleyiniz):</label>
+                        <input value="{{$club->text}}" id="name" type="text" class="form-control"  name="text" required>
+                    </div>
+
                     <div class="form-group">
                         <label>Okul Seçiniz:</label>
                         <div class="controls">
@@ -96,7 +118,7 @@
                     <textarea name="description" style="height: 300px;" class="my-editor">{!! $club->description !!}</textarea>
 
 
-                    <textarea name="content" style="height: 300px;" class="my-editor">{{$club->content}}</textarea>
+                    <textarea name="content" style="height: 300px;" class="my-editor">{!! $club->content !!}</textarea>
 
 
                     <div class="box-footer">

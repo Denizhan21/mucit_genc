@@ -80,7 +80,7 @@ Route::get('activity_view','HomeController@activity_view')->name('activity_view'
 Route::get('activities/{id}','HomeController@activity_details')->name('activity_details');
 
 //Proje Gönderme Sayfası
-Route::get('project_send','HomeController@project_send')->name('project_send');
+Route::get('project_send/{code}','HomeController@project_send')->name('project_send');
 
 //Proje Post Etme İşlemi
 Route::post('project_store','HomeController@project_store')->name('project_store');

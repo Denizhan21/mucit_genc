@@ -4,8 +4,35 @@
     <div class="page-content">
 
 
-        <div class="container">
 
+        <div class="container">
+            @if (Route::has('login'))
+                @auth
+
+
+            @php
+
+            $user_club = \App\Club_user::where('club_id','=',$clubs->id)->where('status','=','1')->where('user_id','=',\Illuminate\Support\Facades\Auth::id())->first();
+            @endphp
+
+
+            @if(!empty($user_club))
+            @if($clubs->confirmation == 1 OR \Illuminate\Support\Facades\Auth::id() == $user_club->id)
+            <a href="/project_send/{{$clubs->code}}"   class="btn btn-round btn-dark">Kulübe Proje Gönder</a>
+            @endif
+
+            @else
+                @if($clubs->confirmation == 1)
+                    <a href="/project_send/{{$clubs->code}}"   class="btn btn-round btn-dark">Kulübe Proje Gönder</a>
+                @endif
+
+                @endif
+
+                @endauth
+            @endif
+
+
+            <hr>
             <div class="newsfeed-banner">
                 <div class="media">
 
@@ -100,6 +127,9 @@
                         <div class="widget-heading">
                             <h4><small>Kulüp Tanıtımı</small></h4>
                         </div>
+
+                        @if($clubs->type == 'Drive')
+
                         <?php
                         $metin  = $clubs->text;
                         $eski   = "view?usp=sharing";
@@ -107,6 +137,11 @@
                         $metin = str_replace($eski, $yeni, $metin);
                         ?>
                         <iframe src="{{$metin}}" frameborder="0" width="710" height="400"></iframe>
+
+                        @else
+
+                            <iframe src="{{$clubs->text}}" frameborder="0" width="710" height="400"></iframe>
+                        @endif
                     </div>
 
 
@@ -253,6 +288,10 @@
                                 $metin = str_replace($eski, $yeni, $metin);
                                 ?>
                                 <iframe src="{{$metin}}" frameborder="0" width="710" height="400"></iframe>
+                            @elseif($club_projects->type=='YouTube')
+                                <img style="width: 710px;height: 400px" src="/{{$club_projects->photo}}" alt="Groups">
+
+                                <iframe src="{{$club_projects->content}}" frameborder="0" width="710" height="400"></iframe>
                             @elseif($club_projects->type=='Power Point')
                                 <img style="width: 710px;height: 400px" src="/{{$club_projects->photo}}" alt="Groups">
                                 <?php

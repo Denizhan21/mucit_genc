@@ -6,7 +6,7 @@
             <div class="block-box user-single-blog">
                 <div class="blog-content-wrap">
                     <div class="blog-comment-form">
-                        <h3 class="item-title">Kulübe Üye Olun</h3>
+                        <h3 class="item-title">Kulübe Üye Olun  ({{$club->name}})</h3>
                         {!! Form::open(['route'=>['club_join_store'],'method'=>'POST','files'=>'true','class'=>'form-horizontal']) !!}
 
                         <div class="row gutters-20">
@@ -35,9 +35,13 @@
                             @if (Route::has('login'))
                                 @auth
 
+                                    @if(\Illuminate\Support\Facades\Auth::user()->authority == 'Student')
                                     <div class="col-lg-12 form-group">
                                         <button id="gameStart" class="submit-btn" type="submit">Kaydol</button>
                                     </div>
+                                        @else
+                                        yetkiniz yok
+                                        @endif
 
                                 @else
 

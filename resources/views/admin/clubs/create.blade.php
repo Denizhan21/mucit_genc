@@ -19,6 +19,23 @@
                         <input id="name" type="text" class="form-control"  name="name" required>
                     </div>
 
+                    @php
+                        $talepgrup = [
+                            'drive'=>'Drive',
+                            'youtube'=>'YouTube',
+                            ];
+                    @endphp
+                    <div class="form-group">
+                        <label>Tanıtım Dosyası Tipini Seçiniz:</label>
+                        <div class="controls">
+                            <select name="type" id="select" class="form-control">
+                                @foreach($talepgrup as $key=>$alan)
+                                    <option value="{{$alan}}">{{$alan}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="example_input_full_name">Kulüp Tanıtım Videosu/PDF si(Drive Linki Olarak Yükleyiniz):</label>
                         <input id="name" type="text" class="form-control"  name="text" required>

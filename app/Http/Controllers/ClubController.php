@@ -62,10 +62,6 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), array(
-            'name'=>'required',
-            'teacher'=>'required',
-        ));
 
 
         $club = new Club();
@@ -79,6 +75,7 @@ class ClubController extends Controller
         $club->confirmation = request('confirmation');
         $club->text         = request('text');
         $club->content      = request('content');
+        $club->type      = request('type');
 
         if (request()->hasFile('logo')) {
             $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
@@ -149,6 +146,7 @@ class ClubController extends Controller
         $club->confirmation = request('confirmation');
         $club->text         = request('text');
         $club->content      = request('content');
+        $club->type      = request('type');
 
         if (request()->hasFile('logo')) {
             $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));

@@ -26,6 +26,7 @@
     <!-- Ajax  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <script src="https://cdn.tiny.cloud/1/guga53l51d8lxq6hmvluiuvqfj89iqdblnwjsdjuwy7gqteo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 
     @yield('css')

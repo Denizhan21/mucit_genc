@@ -312,7 +312,7 @@
                                         <ul class="admin-options">
 
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
-                                            <li><a href="{{route('project_send')}}">Projeni Gönder</a></li>
+                                            <li><a href="#">Projeni Gönder</a></li>
                                             <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                         </ul>
                                     </div>
@@ -632,7 +632,7 @@
                                         <ul class="admin-options">
 
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
-                                            <li><a href="{{route('project_send')}}">Projeni Gönder</a></li>
+                                            <li><a href="#">Projeni Gönder</a></li>
                                             <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                         </ul>
                                     </div>
@@ -950,7 +950,7 @@
                                         <ul class="admin-options">
 
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
-                                            <li><a href="{{route('project_send')}}">Projeni Gönder</a></li>
+                                            <li><a href="#">Projeni Gönder</a></li>
                                             <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                         </ul>
                                     </div>

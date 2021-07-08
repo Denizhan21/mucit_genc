@@ -41,22 +41,14 @@ class HomeController extends Controller
         return redirect('/');
     }
 
-    public function project_send()
+    public function project_send($code)
     {
-        $club = Club::where('confirmation','=',1)->get();
 
-        $user = Auth::id();
-
+        $club = Club::where('code',$code)->firstOrFail();
 
 
 
-        $clubs_club = Club::where('confirmation','=',0)->get();
-
-
-
-        $confirmation_club = Club_user::where('user_id','=',$user)->where('status','=',1)->get();
-
-        return view('homepage.project_send',compact('club','confirmation_club','clubs_club'));
+        return view('homepage.project_send',compact('club'));
     }
 
 

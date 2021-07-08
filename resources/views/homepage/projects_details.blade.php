@@ -124,6 +124,9 @@
                                     $metin = str_replace($eski, $yeni, $metin);
                                     ?>
                                     <iframe src="{{$metin}}" frameborder="0" width="710" height="400"></iframe>
+                                @elseif($projects->type=='YouTube')
+
+                                    <iframe src="{{$projects->content}}" frameborder="0" width="710" height="400"></iframe>
                                 @elseif($projects->type=='Power Point')
                                     <?php
                                     $metin  = $projects->content;
