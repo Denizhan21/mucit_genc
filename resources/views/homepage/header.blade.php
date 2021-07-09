@@ -359,8 +359,8 @@
                                     <li class="header-nav-item">
                                         <a href="{{route('homepage')}}" class="menu-link active">Anasayfa</a>
                                     </li>
-                                    <li class="hide-on-mobile-menu">
-                                        <a href="#" class="menu-link have-sub">Kulüpler</a>
+                                  {{--  <li class="hide-on-mobile-menu">
+                                        <a href="{{route('club_view')}}" class="menu-link have-sub">Kulüpler</a>
                                         <ul class="mega-menu mega-menu-col-2">
                                             @foreach($clubs_header as $clubs)
                                                 <li>
@@ -372,6 +372,9 @@
                                                 </li>
                                             @endforeach
                                         </ul>
+                                    </li>--}}
+                                    <li class="header-nav-item">
+                                        <a href="{{route('club_view')}}" class="menu-link">Kulüpler</a>
                                     </li>
 
 
@@ -381,15 +384,13 @@
 
 
                                     <li class="header-nav-item">
-                                        <a href="contact.html" class="menu-link">Etkinlikler</a>
+                                        <a href="{{route('activity_view')}}" class="menu-link">Duyurular</a>
                                     </li>
 
-                                    <li class="header-nav-item">
-                                        <a href="contact.html" class="menu-link">Haberler</a>
-                                    </li>
+
 
                                     <li class="header-nav-item">
-                                        <a href="contact.html" class="menu-link">İletişim</a>
+                                        <a href="{{route('contact')}}" class="menu-link">İletişim</a>
                                     </li>
 
 
