@@ -295,7 +295,7 @@
                                         <span class="item-img">
                                             @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                             <img style="width: 44px;height: 44px" src="/{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}">
-                                            @else
+                                            @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img src="/homepage/media/figure/chat_5.jpg" alt="Chat">
                                             @endif
                                                 <span class="acc-verified"><i class="icofont-check"></i></span>
@@ -308,10 +308,9 @@
 
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <ul class="admin-options">
-                                            @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
+                                            @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
                                                 <li><a href="{{route('admin.index')}}">Panele Git</a></li>
-                                            @elseif(\Illuminate\Support\Facades\Auth::user()->authority=='teacher')
-                                                <li><a href="{{route('admin.index')}}">Panele Git</a></li>
+
                                                 @endif
 
                                             <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>

@@ -26,14 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $clubs_header = Club::all();
+        /*$clubs_header = Club::all();
 
 
         View::share([
 
             'clubs_header'=>$clubs_header,
 
-        ]);
+        ]);*/
 
         Schema::defaultStringLength(191);
     }

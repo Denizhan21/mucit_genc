@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->id;
     }
 
+    public function avatar() {
+        return $this->avatar;
+    }
+
     public function name() {
         return $this->name;
     }
