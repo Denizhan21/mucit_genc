@@ -23,7 +23,9 @@
                     @endif
                 </div>
                 <div class="conn-people">Ayının Gündemi</div>
+                @if(!empty($news))
                 <a href="/news/{{$news->id}}" class="button-slide">
+                    @endif
                     <span class="btn-text">Daha Fazla</span>
                     <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
@@ -74,7 +76,7 @@
                             <img style="width: 285px;height: 185px" src="/{{$clubs->logo}}" alt="Groups">
                         </div>
                         <div class="item-content">
-                            <h3 class="item-title"><a href="user-single-group.html">{{$clubs->name}}</a></h3>
+                            <h3 class="item-title"><a href="/clubs/{{$clubs->id}}">{{$clubs->name}}</a></h3>
                             <div class="groups-member"><a style="color: white" href="/clubs/{{$clubs->id}}">Git</a></div>
                         </div>
                     </div>
