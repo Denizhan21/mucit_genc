@@ -82,13 +82,6 @@
     </form>
     <hr>
 
-    @php
-        $deg = 'denizhan';
-         $user_mails = \App\User::where('email', 'like', "%$deg%")->first();
-
-    echo ($user_mails);
-    @endphp
-
 
     <div class="row">
         <div class="col-lg-12">
