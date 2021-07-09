@@ -152,3 +152,10 @@ Route::get('migrate', function () {
 Route::get('onayla/{id}','ActivityController@onayla')->name('activities.onayla');
 Route::get('onaykaldir/{id}','ActivityController@onaykaldir')->name('activities.onaykaldir');
 
+
+//Öğrenciye Yorum Hakkı verme ve Kaldırma İşlemleri
+Route::get('onayla/{id}','UserController@onayla')->name('users.onayla');
+Route::get('onaykaldir/{id}','UserController@onaykaldir')->name('users.onaykaldir');
+
+//Gündem Detay Sayfası
+Route::get('news/{id}','HomeController@news_details')->name('news_details');

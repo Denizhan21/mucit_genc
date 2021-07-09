@@ -37,6 +37,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label>Yüklü Fotoğraf:</label>
+                        <img width="40" height="40" src="/{{$user->avatar}}" alt="{{$user->name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Fotoğraf:</label>
+                        <input id="email" type="file" class="form-control" name="avatar"  >
+                    </div>
+                    <div class="form-group">
                         <label>Şifre:</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
                         @error('password')

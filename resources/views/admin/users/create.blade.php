@@ -56,6 +56,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Fotoğraf:</label>
+                            <input  type="file" class="form-control" name="avatar">
+                        </div>
+
+                        <div class="form-group">
                             <label>Şifre:</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             @error('password')

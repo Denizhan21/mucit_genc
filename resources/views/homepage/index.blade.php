@@ -23,7 +23,7 @@
                     @endif
                 </div>
                 <div class="conn-people">Ayının Gündemi</div>
-                <a href="newsfeed.html" class="button-slide">
+                <a href="/news/{{$news->id}}" class="button-slide">
                     <span class="btn-text">Daha Fazla</span>
                     <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">

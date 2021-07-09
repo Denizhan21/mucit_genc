@@ -79,6 +79,7 @@
         <br>
         <button class="btn btn-success">İçeri Kullanıcı Aktar</button>
         <a class="btn btn-warning" href="{{ route('export') }}">Kullanıcıları dışa aktar</a>
+        <a class="btn btn-default" download href="/homepage/media/excel.XLSX">Excel Formatını İndir</a>
     </form>
     <hr>
 
@@ -97,6 +98,7 @@
                                 <th>#</th>
                                 <th>Ad Soyad</th>
                                 <th>Yetki</th>
+                                <th>Yorum İzni</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
                             </tr>
@@ -111,6 +113,17 @@
                                     @elseif($users->authority=='student')
                                         <td><span class="label label-danger">Öğrenci</span></td>
                                     @endif
+                                    <td>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
+                                            @if($users->comment_authority=='0')
+                                                <a href="{{route('users.onayla',$users->id)}}"><span class="label label-success">Onayla</span></a>
+                                            @else
+                                                <a href="{{route('users.onaykaldir',$users->id)}}"><span class="label label-info">Onay Kaldır</span></a>
+                                            @endif
+                                        @else
+                                            {{$users->comment_authority==1?'Aktif':''}}   {{$users->comment_authority==0?'Pasif':''}}
+                                        @endif
+                                    </td>
                                     <td><a class="btn btn-xs btn-warning" href="{{route('users.edit',$users->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
                                     <td>
                                         {!! Form::open(['method'=>'DELETE','id'=>'usersdelete','action'=>['UserController@destroy',$users->id],'style'=>'display:inline']) !!}

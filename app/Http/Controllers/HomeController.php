@@ -113,6 +113,13 @@ class HomeController extends Controller
         return view('homepage.activity_details',compact('activity'));
     }
 
+    public function news_details($id)
+    {
+        $news = News::findOrFail($id);
+
+        return view('homepage.news_details',compact('news'));
+    }
+
     public function projects_details($id)
     {
         $projects = Project::findOrFail($id);

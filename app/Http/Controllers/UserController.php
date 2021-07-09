@@ -95,6 +95,70 @@ class UserController extends Controller
         $user->school = request('school');
 
 
+
+
+
+
+
+        if (request()->hasFile('avatar')) {
+            $this->validate(request(), array('avatar' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('avatar');
+            $dosya_adi = 'avatar'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $user->avatar = $dosya_yolu;
+            }
+        }
+
+
+
+
+       /* if (request()->hasFile('avatar')) {
+
+            // Dosya adını alalım
+            $filename = $_FILES['avatar']['name'];
+
+            // Gelen dosya bir görsel mi?
+            $valid_ext = array('png', 'jpeg', 'jpg');
+
+            // Nereye kaydedelim?
+            $location = "images/" . $filename;
+
+            // dosya uzantısı işlemleri
+            $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+            $file_extension = strtolower($file_extension);
+
+            // uzantı kontrolü
+            if (in_array($file_extension, $valid_ext)) {
+
+                // Resmi sıkıştıralım. Kalitesi 60 olsun.
+                compressImage($_FILES['avatar']['tmp_name'], $location, 60);
+
+            } else {
+                echo "Bilinmeyen dosya uzantısı.";
+            }
+
+
+
+        }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (request('password') != request('password_confirmation')) {
             return redirect()->back()->with('pass', 'pass');
         }else {
@@ -149,6 +213,19 @@ class UserController extends Controller
 
         }
 
+        if (request()->hasFile('avatar')) {
+            $this->validate(request(), array('avatar' => 'image|mimes:png,jpg,jpeg,gif'));
+
+            $resim = request()->file('avatar');
+            $dosya_adi = 'avatar'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $user->avatar = $dosya_yolu;
+            }
+        }
 
 
         if (!empty(request('password'))) {
@@ -177,5 +254,27 @@ class UserController extends Controller
         }
 
 
+    }
+
+
+    public function onayla($id) {
+        $user = User::findOrFail($id);
+        $user->comment_authority = 1;
+        $user->save();
+        if ($user) {
+            return redirect()->back()->with('durumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumno', 'kullanıcı eklendi');
+        }
+    }
+    public function onaykaldir($id) {
+        $user = User::findOrFail($id);
+        $user->comment_authority = 0;
+        $user->save();
+        if ($user) {
+            return redirect()->back()->with('durumumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumumno', 'kullanıcı eklendi');
+        }
     }
 }
