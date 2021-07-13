@@ -17,6 +17,7 @@
 
                             <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                     <input type="hidden" name="status" value="0">
+                                    <input type="hidden" name="club_id" value="{{$club->id}}">
 
                                 @endauth
                             @endif

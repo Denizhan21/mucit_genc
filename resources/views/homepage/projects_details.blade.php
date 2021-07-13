@@ -208,7 +208,7 @@
                                         <ul class="react-list emojies">
 
                                          @if(!empty($rating_login))
-                                                {!! Form::model($rating_login,['method'=>'PUT','files'=>'true','class'=>'form-horizontal','id'=>'ajax-form','onsubmit'=>'return ajaxekle()']) !!}
+                                                {!! Form::model($rating_login,['route'=>['like_send_update',$rating_login->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}
                                                 <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}}><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
                                                 <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}}><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
                                                 <li><label class="like-button" for="3"><input id="3" type="radio" name="rateable_type" value="3" {{$rating_login->rateable_type==3?'checked':''}}><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
@@ -432,14 +432,14 @@
 @endsection
 
 @section('css')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ {{--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-@endsection
+--}}@endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+   {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script>
+   --}} <script>
         @if (session('alert'))
 
         swal({
@@ -523,34 +523,4 @@
         });
         @endif
     </script>
-
-    <script>
-        function ajaxekle() {
-            var form = $("#ajax-form");
-            var form_data = $("#ajax-form").serialize();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type:"put",
-                url:"<?php echo (route('like_send_update',$rating_login->id)); ?>",
-                data: form_data,
-                success:function () {
-                    swal({
-                        title:"Başarılı",
-                        text:"Ayar Düzenlendi",
-                        type: "success",
-                        timer:2000,
-                        showConfirmButton: false
-                    });
-                }
-            });
-            return false;
-        }
-    </script>
-    <script scr="https://code.jquery.com/jquery.js"></script>
-    <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 @endsection

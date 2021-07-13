@@ -125,15 +125,7 @@
                 </ul>
             </li>
 
-            <li class="">
-                <a href="http://127.0.0.1:8000/laravel-filemanager">
-                    <i class="fa fa-file-archive-o"></i> <span>Dosya Yönetimi</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-                </a>
-            </li>
-
+            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="">
                 <a href="{{route('logs')}}">
                     <i class="fa fa-calendar"></i> <span>Log Kayıtları</span>
@@ -142,6 +134,7 @@
             </span>
                 </a>
             </li>
+            @endif
 
         </ul>
     </section>
