@@ -278,9 +278,9 @@
                 </div>
             </div>
         </header>
-    @endauth
+
 @else
-    @auth
+
         <header class="fixed-header">
             <div id="rt-sticky-placeholder"></div>
             <div id="header-menu" class="header-menu menu-layout1">
