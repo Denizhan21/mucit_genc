@@ -48,11 +48,9 @@
 
     @include('homepage.header')
 
-
-
-
     @yield('content')
 
+    @include('homepage.footer')
 
     <div id="header-search" class="header-search">
         <button type="button" class="close">×</button>
