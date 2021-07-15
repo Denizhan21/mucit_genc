@@ -11,6 +11,7 @@
                         <li><a class="box-btn-fullscreen" href="#"></a></li>
                     </ul>
                 </div>
+{{--                <form action="{{route('activities.store')}}" method="POST" class="form-horizontal" onsubmit="return ajaxekle()" id="ajax-form"></form>--}}
                 {!! Form::open(['route'=>['activities.store'],'method'=>'POST','files'=>'true','class'=>'form-horizontal']) !!}
                 <div class="box-body">
                     <div class="form-group">
@@ -56,6 +57,7 @@
                     <button type="submit" class="btn btn-success pull-right">Duyuru Ekle</button>
                 </div>
                 {!! Form::close() !!}
+
             </div>
         </div>
     </div>

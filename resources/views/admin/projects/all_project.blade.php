@@ -29,6 +29,20 @@
 
                             </div>
 
+
+                        <div class="col-md-4 col-4">
+                            <div class="form-group">
+                                <label>Kulüpler</label>
+                                <select class="form-control select2" name="club_id" style="width: 100%;">
+                                    <option value="">Sıralama Tür</option>
+                                    @foreach($club as $clubs)
+                                    <option value="{{$clubs->id}}" {{$clubs->id==$club_id?'selected':''}}>{{$clubs->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
                         <div class="col-lg-12 form-group" align="right">
                             <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Getir</button>
                             <a href="{{route('projects.all')}}" class="btn btn-xs btn-danger"><i class="fa fa-magic"></i> Temizle</a>
@@ -58,12 +72,22 @@
                             <tr>
                                 <th>Proje Adı</th>
                                 <th>Projeyi Gönderen</th>
+                                <th>Projenin Gönderildiği Kulüp</th>
+                                <th>Projenin Durumu</th>
                                 <th>Projeye Git</th>
                             </tr>
                             @foreach($request_forms  as $key=>$club_projects)
                                 <tr>
                                     <td>{{$club_projects->name}}</td>
                                     <td>{{$club_projects->student->name}}</td>
+                                    <td>{{$club_projects->club->name}}</td>
+                                    <td>
+                                        @if($club_projects->status=='0')
+                                            <a href="{{route('project_onayla',$club_projects->id)}}"><span class="label label-success">Onayla</span></a>
+                                        @else
+                                            <a href="{{route('project_onaykaldir',$club_projects->id)}}"><span class="label label-info">Onay Kaldır</span></a>
+                                        @endif
+                                    </td>
                                     <td><a class="" href="{{route('project_details',$club_projects->id)}}"><span class="label label-success">Git</span></a></td>
                                 </tr>
                             @endforeach

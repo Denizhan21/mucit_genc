@@ -25,6 +25,12 @@ Route::group(['prefix'=>'mct_gnc_admin','middleware'=>['teacher']],function () {
     //Kulüp Öğrenci İşlemleri
     Route::resource('club_user','ClubUserController');
 
+    //Duyuru İşlemleri
+    Route::resource('activities','ActivityController');
+
+    //Okul İşlemleri
+    Route::resource('schools','SchoolController');
+
     //Proje İşlemleri
     Route::get('project_index','AdminController@project_index')->name('projects.index');
     Route::get('all_project','AdminController@all_project')->name('projects.all');
@@ -32,6 +38,11 @@ Route::group(['prefix'=>'mct_gnc_admin','middleware'=>['teacher']],function () {
     Route::put('project_edit/{id}','AdminController@project_edit')->name('project_edit');
     Route::put('student_comment/{id}','AdminController@student_comment')->name('student_comment');
 
+    //Öğretmen Kulüpleri Sayfası
+    Route::get('teacher_club','ClubController@teacher_club')->name('teacher_club');
+
+    //Öğretmen Projeleri Sayfası
+    Route::get('teacher_project','AdminController@teacher_project')->name('teacher_project');
 
 
 
@@ -43,13 +54,7 @@ Route::group(['prefix'=>'mct_gnc_admin','middleware'=>'admin'],function () {
     //Kullanıcı İşlemleri
     Route::resource('users','UserController');
 
-    //Okul İşlemleri
-    Route::resource('schools','SchoolController');
-
-    //Etkinlik İşlemleri
-    Route::resource('activities','ActivityController');
-
-    //Haber İşlemleri
+    //Gündem İşlemleri
     Route::resource('news','NewsController');
 
     //Yorum İşlemleri
@@ -159,3 +164,7 @@ Route::get('onaykaldir/{id}','UserController@onaykaldir')->name('users.onaykaldi
 
 //Gündem Detay Sayfası
 Route::get('news/{id}','HomeController@news_details')->name('news_details');
+
+//Proje Onaylama ve Onay Kaldırma İşlemleri
+Route::get('project_onayla/{id}','AdminController@project_onayla')->name('project_onayla');
+Route::get('project_onaykaldir/{id}','AdminController@project_onaykaldir')->name('project_onaykaldir');

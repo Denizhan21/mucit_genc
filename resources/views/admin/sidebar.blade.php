@@ -29,6 +29,8 @@
             </span>
                 </a>
             </li>
+
+            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-user"></i>
@@ -56,6 +58,8 @@
                     <li><a href="{{route('projects.all')}}"><i class="fa fa-circle-thin"></i>Projeler</a></li>
                 </ul>
             </li>
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-building-o"></i>
@@ -66,22 +70,26 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('schools.index')}}"><i class="fa fa-circle-thin"></i>Okullar</a></li>
+
                     <li><a href="{{route('schools.create')}}"><i class="fa fa-circle-thin"></i>Okul Ekle</a></li>
+
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-cc-diners-club "></i>
-                    <span>Kulüp İşlemleri</span>
-                    <span class="pull-right-container">
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-cc-diners-club "></i>
+                        <span>Kulüp İşlemleri</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('clubs.index')}}"><i class="fa fa-circle-thin"></i>Kulüpler</a></li>
-                    <li><a href="{{route('clubs.create')}}"><i class="fa fa-circle-thin"></i>Kulüp Ekle</a></li>
-                </ul>
-            </li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('clubs.index')}}"><i class="fa fa-circle-thin"></i>Kulüpler</a></li>
+                        <li><a href="{{route('clubs.create')}}"><i class="fa fa-circle-thin"></i>Kulüp Ekle</a></li>
+                    </ul>
+                </li>
+            @endif
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i>
@@ -91,12 +99,46 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('activities.index')}}"><i class="fa fa-circle-thin"></i>Duyurular</a></li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
+                        <li><a href="{{route('activities.index')}}"><i class="fa fa-circle-thin"></i>Duyurular</a></li>
+                    @endif
                     <li><a href="{{route('activities.create')}}"><i class="fa fa-circle-thin"></i>Duyuru Ekle</a></li>
                 </ul>
             </li>
 
 
+            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'teacher')
+            <li class="">
+                <a href="{{route('teacher_club')}}">
+                    <i class="fa fa-calendar"></i> <span>Kulüplerim</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+            </li>
+
+                <li class="">
+                    <a href="{{route('teacher_club')}}">
+                        <i class="fa fa-calendar"></i> <span>Gelen Projeler</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="{{route('teacher_club')}}">
+                        <i class="fa fa-calendar"></i> <span>Kayıtlı Öğrenciler</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                    </a>
+                </li>
+            @endif
+
+
+            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i>
@@ -111,7 +153,6 @@
                 </ul>
             </li>
 
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-newspaper-o"></i>
@@ -125,7 +166,6 @@
                 </ul>
             </li>
 
-            @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="">
                 <a href="{{route('logs')}}">
                     <i class="fa fa-calendar"></i> <span>Log Kayıtları</span>
@@ -135,6 +175,9 @@
                 </a>
             </li>
             @endif
+
+
+
 
         </ul>
     </section>

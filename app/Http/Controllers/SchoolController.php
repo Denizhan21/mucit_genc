@@ -28,11 +28,12 @@ class SchoolController extends Controller
         $school->name = request('name');
         $school->status = request('status');
         $school->save();
-        if ($school) {
+       /* if ($school) {
             return redirect()->back()->with('alert', 'alert');
         }else {
             return redirect()->back()->with('no', 'no');
-        }
+        }*/
+        return response()->json(['success'=>$school]);
     }
 
     public function edit($id)
@@ -50,11 +51,13 @@ class SchoolController extends Controller
         $school->name = request('name');
         $school->status = request('status');
         $school->save();
-        if ($school) {
+
+        return response()->json(['success'=>$school]);
+       /* if ($school) {
             return redirect()->back()->with('alert', 'alert');
         }else {
             return redirect()->back()->with('no', 'no');
-        }
+        }*/
     }
 
     public function destroy($id)

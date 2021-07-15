@@ -14,7 +14,7 @@
                             <tr>
                                 <th>Kulüp İsmi</th>
                                 @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
-                                <th>Görevli Öğretmen</th>
+                                    <th>Görevli Öğretmen</th>
                                 @endif
                                 <th>Kayıtlı Okul</th>
                                 <th>Kulüp Katılım Linki</th>
@@ -24,28 +24,28 @@
                                 <th>Sil</th>
                             </tr>
                             @foreach($club  as $key=>$clubs)
-                                @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
-                                <tr>
-                                    <td>{{$clubs->name}}</td>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
-                                    <td>{{$clubs->teachers->name}}</td>
-                                    @endif
-                                    <td>{{$clubs->schools->name}}</td>
-                                    <td><a href="{{route('club_join',$clubs->code)}}">{{route('club_join',$clubs->code)}}</a></td>
-                                    <td><a class="" href="{{route('club_user.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
-                                    <td><a class="" href="{{route('projects.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
-                                    <td><a class="btn btn-xs btn-warning" href="{{route('clubs.edit',$clubs->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
-                                    <td>
-                                        {!! Form::open(['method'=>'DELETE','action'=>['ClubController@destroy',$clubs->id],'style'=>'display:inline']) !!}
-                                        <button onclick="return confirm('Emin misin?')" class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
+                                @if(\Illuminate\Support\Facades\Auth::user()->authority=='teacher' and $clubs->teacher == \Illuminate\Support\Facades\Auth::user()->id)
+                                    <tr>
+                                        <td>{{$clubs->name}}</td>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
+                                            <td>{{$clubs->teachers->name}}</td>
+                                        @endif
+                                        <td>{{$clubs->schools->name}}</td>
+                                        <td><a href="{{route('club_join',$clubs->code)}}">{{route('club_join',$clubs->code)}}</a></td>
+                                        <td><a class="" href="{{route('club_user.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
+                                        <td><a class="" href="{{route('projects.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
+                                        <td><a class="btn btn-xs btn-warning" href="{{route('clubs.edit',$clubs->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
+                                        <td>
+                                            {!! Form::open(['method'=>'DELETE','action'=>['ClubController@destroy',$clubs->id],'style'=>'display:inline']) !!}
+                                            <button onclick="return confirm('Emin misin?')" class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
+                                            {!! Form::close() !!}
+                                        </td>
+                                    </tr>
                                 @endif
                             @endforeach
                         </table>
                         <ul class="pagination pagination-sm pull-right">
-                            {{$request_forms->appends(request()->query())->links()}}
+{{--                            {{$request_forms->appends(request()->query())->links()}}--}}
                         </ul>
                     </div>
                 </div>

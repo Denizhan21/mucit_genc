@@ -6,6 +6,7 @@ use App\Club;
 use App\School;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClubController extends Controller
 {
@@ -181,5 +182,11 @@ class ClubController extends Controller
     public function destroy(Club $club)
     {
         //
+    }
+
+    public function teacher_club() {
+        $club = Club::where('teacher','=',Auth::id())->get();
+
+        return view('admin.clubs.teacher_club',compact('club'));
     }
 }

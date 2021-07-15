@@ -6,6 +6,7 @@ use App\Club;
 use App\Project;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -45,11 +46,21 @@ class AdminController extends Controller
             $order_type = 'desc';
         }
 
+
+        if ($request->input('club_id') != '') {
+            $query->where('club_id', $request->input('club_id'));
+            $club_id = $request->input('club_id');
+        } else {
+            $club_id = null;
+        }
+
+        $club = Club::all();
+
         $query->orderBy($order_field,$order_type);
         $count = $query->count();
         $request_forms = $query->paginate(50)->appends(request()->query());
 
-        return view('admin.projects.all_project',compact('request_forms','count','name','order_type'));
+        return view('admin.projects.all_project',compact('request_forms','count','name','order_type','club_id','club'));
     }
 
     public function project_details($id) {
@@ -94,6 +105,19 @@ class AdminController extends Controller
 
         }else {
             $project->content = request('content');
+            if (request()->hasFile('photo')) {
+                $this->validate(request(), array('photo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+                $resim = request()->file('photo');
+                $dosya_adi = 'photo'.'-'.time().'.'.$resim->extension();
+
+                if ($resim->isValid()) {
+                    $hedef_klasor = 'uploads/images';
+                    $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                    $resim->move($hedef_klasor,$dosya_adi);
+                    $project->photo = $dosya_yolu;
+                }
+            }
         }
 
 
@@ -113,5 +137,33 @@ class AdminController extends Controller
     {
         auth()->logout();
         return redirect('/');
+    }
+
+    public function project_onayla($id) {
+        $project = Project::findOrFail($id);
+        $project->status = 1;
+        $project->save();
+        if ($project) {
+            return redirect()->back()->with('durumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumno', 'kullanıcı eklendi');
+        }
+    }
+    public function project_onaykaldir($id) {
+        $project = Project::findOrFail($id);
+        $project->status = 0;
+        $project->save();
+        if ($project) {
+            return redirect()->back()->with('durumumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumumno', 'kullanıcı eklendi');
+        }
+    }
+
+
+    public function teacher_project() {
+        $club = Club::where('teacher','=',Auth::id())->get();
+        $project = Project::all();
+        return view('admin.projects.teacher_project',compact('project','club'));
     }
 }

@@ -349,22 +349,24 @@ class HomeController extends Controller
         $like->rateable_type = request('rateable_type');
         $like->rating = request('rating');
         $like->save();
-        if ($like) {
+        /*if ($like) {
             return redirect()->back()->with('alertsd','alertsd');
         }else{
             return redirect()->back()->with('nosd','nosd');
-        }
+        }*/
+        return response()->json(['success'=>$like]);
     }
 
     public function like_send_update($id) {
         $like = Rating::findOrFail($id);
         $like->rateable_type = request('rateable_type');
         $like->save();
-        if ($like) {
+       /* if ($like) {
             return redirect()->back();
         }else{
             return redirect()->back();
-        }
+        }*/
+        return response()->json(['success'=>$like]);
     }
 
     public function club_join($code) {

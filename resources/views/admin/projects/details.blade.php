@@ -50,7 +50,17 @@
 
                         </div>
                         </div>
+
                     @elseif($project->type=='Video')
+                        <div class="form-group">
+                            <label for="example_input_full_name">Mecvut Kapak Fotoğrafı:</label>
+                            <img width="200" src="/{{$project->photo}}" alt="{{$project->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="example_input_full_name">Proje Kapak Fotoğrafı:</label>
+                            <input id="name" type="file" class="form-control"  name="photo">
+                        </div>
+
                         <?php
                         $metin  = $project->content;
                         $eski   = "view?usp=sharing";
@@ -59,7 +69,7 @@
                         ?>
 
                             <div class="form-group">
-                                <label for="example_input_full_name">Drive Linki:</label>
+                                <label for="example_input_full_name">Link:</label>
                                 <input id="name" type="text" class="form-control"  name="content" required value="{{$project->content}}">
                             </div>
 
@@ -68,6 +78,14 @@
 
 
                     @elseif($project->type=='Power Point')
+                        <div class="form-group">
+                            <label for="example_input_full_name">Mecvut Kapak Fotoğrafı:</label>
+                            <img width="200" src="/{{$project->photo}}" alt="{{$project->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="example_input_full_name">Proje Kapak Fotoğrafı:</label>
+                            <input id="name" type="file" class="form-control"  name="photo">
+                        </div>
                         <?php
                         $metin  = $project->content;
                         $eski   = "view?usp=sharing";
@@ -76,16 +94,35 @@
                         ?>
 
                             <div class="form-group">
-                                <label for="example_input_full_name">Drive Linki:</label>
+                                <label for="example_input_full_name">Link:</label>
                                 <input id="name" type="text" class="form-control"  name="content" required value="{{$project->content}}">
                             </div>
 
 
                         <iframe src="{{$metin}}" frameborder="0" width="710" height="400"></iframe>
+
+
+                        @elseif($project->type=='YouTube')
+                        <div class="form-group">
+                            <label for="example_input_full_name">Mecvut Kapak Fotoğrafı:</label>
+                            <img width="200" src="/{{$project->photo}}" alt="{{$project->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="example_input_full_name">Proje Kapak Fotoğrafı:</label>
+                            <input id="name" type="file" class="form-control"  name="photo">
+                        </div>
+                        <div class="form-group">
+                            <label for="example_input_full_name">Link:</label>
+                            <input id="name" type="text" class="form-control"  name="content" required value="{{$project->content}}">
+                        </div>
+
+                        <iframe src="{{$project->content}}" frameborder="0" width="710" height="400"></iframe>
                     @endif
 
                     <div class="box-footer">
+                        @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
                         <a href="{{route('projects.all')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
+                        @endif
                         <button type="submit" class="btn btn-success pull-right">Proje Düzenle</button>
                     </div>
                     {!! Form::close() !!}
