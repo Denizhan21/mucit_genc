@@ -33,7 +33,7 @@
                             @endforeach
                         </table>
                         <ul class="pagination pagination-sm pull-right">
-                            {{ $activities->links() }}
+                            {{ $news->links() }}
                         </ul>
                     </div>
                 </div>

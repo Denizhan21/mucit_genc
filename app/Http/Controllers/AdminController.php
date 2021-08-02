@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
 use App\Club;
 use App\Project;
 use Illuminate\Database\Eloquent\Model;
@@ -154,6 +155,27 @@ class AdminController extends Controller
         $project->status = 0;
         $project->save();
         if ($project) {
+            return redirect()->back()->with('durumumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumumno', 'kullanıcı eklendi');
+        }
+    }
+
+    public function activity_onayla($id) {
+        $activity = Activity::findOrFail($id);
+        $activity->status = 1;
+        $activity->save();
+        if ($activity) {
+            return redirect()->back()->with('durumyes', 'kullanıcı eklendi');
+        }else {
+            return redirect()->back()->with('durumno', 'kullanıcı eklendi');
+        }
+    }
+    public function activity_onaykaldir($id) {
+        $activity = Activity::findOrFail($id);
+        $activity->status = 0;
+        $activity->save();
+        if ($activity) {
             return redirect()->back()->with('durumumyes', 'kullanıcı eklendi');
         }else {
             return redirect()->back()->with('durumumno', 'kullanıcı eklendi');

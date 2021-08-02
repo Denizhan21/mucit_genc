@@ -26,9 +26,9 @@
                                     <td>
                                         @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
                                         @if($activity->status=='0')
-                                            <a href="{{route('activities.onayla',$activity->id)}}"><span class="label label-success">Onayla</span></a>
-                                        @else
-                                            <a href="{{route('activities.onaykaldir',$activity->id)}}"><span class="label label-info">Onay Kaldır</span></a>
+                                            <a href="{{route('activity_onayla',$activity->id)}}"><span class="label label-success">Onayla</span></a>
+                                        @elseif($activity->status=='1')
+                                            <a href="{{route('activity_onaykaldir',$activity->id)}}"><span class="label label-info">Onay Kaldır</span></a>
                                         @endif
                                         @else
                                          {{$activity->status==1?'Aktif':''}}   {{$activity->status==0?'Pasif':''}}

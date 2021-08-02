@@ -154,8 +154,8 @@ Route::get('migrate', function () {
 
 
 //Duyuru Onaylama ve Onay Kaldırma İşlemleri
-Route::get('onayla/{id}','ActivityController@onayla')->name('activities.onayla');
-Route::get('onaykaldir/{id}','ActivityController@onaykaldir')->name('activities.onaykaldir');
+Route::get('activity_onayla/{id}','AdminController@activity_onayla')->name('activity_onayla');
+Route::get('activity_onaykaldir/{id}','AdminController@activity_onaykaldir')->name('activity_onaykaldir');
 
 
 //Öğrenciye Yorum Hakkı verme ve Kaldırma İşlemleri
