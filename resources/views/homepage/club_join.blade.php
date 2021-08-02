@@ -35,7 +35,7 @@
                             @if (Route::has('login'))
                                 @auth
 
-                                    @if(\Illuminate\Support\Facades\Auth::user()->authority == 'Student')
+                                    @if(\Illuminate\Support\Facades\Auth::user()->authority == 'student')
                                     <div class="col-lg-12 form-group">
                                         <button id="gameStart" class="submit-btn" type="submit">Kaydol</button>
                                     </div>
