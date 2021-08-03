@@ -5,6 +5,7 @@
 /vendor
 /public/admin
 /public/homepage
+/public
 .env
 .env.backup
 .phpunit.result.cache

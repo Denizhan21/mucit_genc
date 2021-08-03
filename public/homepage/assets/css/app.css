@@ -11687,7 +11687,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 .like-button>input:checked+img {
     border-radius: 50%;
-    background: #e0e0e0;
+    background: #0f70b7;
     box-shadow:  0px 0px 32px #bcbcbc;
 }
 
