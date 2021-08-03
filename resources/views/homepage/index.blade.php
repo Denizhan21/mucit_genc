@@ -363,11 +363,13 @@
                                     <a href="/activities/{{$activity->id}}">
                                         <img style="width: 510px;height: 340px;" src="/{{$activity->photo}}" alt="Blog">
                                     </a>
-                                    <div class="blog-date"><i class="icofont-calendar"></i>  @php
+                                    <div class="blog-date"><i class="icofont-calendar"></i>
+                                        @php
                                             setlocale(LC_TIME, "turkish");
                                             setlocale(LC_ALL,'turkish');
                                             echo iconv('latin5','utf-8',strftime('%d %B %Y %A',strtotime($activity->created_at)));
-                                        @endphp</div>2
+                                        @endphp
+                                    </div>
                                 </div>
                                 <div class="blog-content">
                                     <h3 class="blog-title"><a href="/activities/{{$activity->id}}">{{$activity->title}} </a> ({{$activity->type}})</h3>
