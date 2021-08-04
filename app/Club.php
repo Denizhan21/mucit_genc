@@ -29,4 +29,16 @@ class Club extends Model
     public function schools() {
         return $this->belongsTo('App\School','school_id');
     }
+
+    public function rosette() {
+        return $this->hasMany('App\Rosette','club_id');
+    }
+
+    public function link() {
+        return $this->hasMany('App\Link','club_id');
+    }
+
+    public function platform() {
+        return $this->hasMany('App\Platform','club_id');
+    }
 }

@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model
+class Rosette extends Model
 {
-    protected $table = 'platforms';
+    protected $table = 'rosettes';
     protected $guarded = [];
 
-    public function platform_club() {
+    public function rosette_club() {
         return $this->belongsToMany('App\Club');
     }
 }

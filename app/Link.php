@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Platform extends Model
+class Link extends Model
 {
-    protected $table = 'platforms';
+    protected $table = 'links';
     protected $guarded = [];
 
-    public function platform_club() {
+    public function link_club() {
         return $this->belongsToMany('App\Club');
     }
 }
