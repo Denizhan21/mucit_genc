@@ -17,6 +17,7 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->string('link');
             $table->integer('status');
+            $table->integer('authority');
             $table->unsignedBigInteger('club_id')->unsigned();
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->timestamps();
