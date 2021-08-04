@@ -168,3 +168,9 @@ Route::get('news/{id}','HomeController@news_details')->name('news_details');
 //Proje Onaylama ve Onay Kaldırma İşlemleri
 Route::get('project_onayla/{id}','AdminController@project_onayla')->name('project_onayla');
 Route::get('project_onaykaldir/{id}','AdminController@project_onaykaldir')->name('project_onaykaldir');
+
+
+
+Route::get('deneme','HomeController@deneme')->name('deneme');
+
+Route::post('deneme_gonder','HomeController@deneme_gonder')->name('deneme_gonder');

@@ -11,6 +11,7 @@ use App\Contact;
 use App\News;
 use App\Project;
 use App\Rating;
+use App\School;
 use App\Teacher_comment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -400,6 +401,19 @@ class HomeController extends Controller
         }else{
             return redirect()->back()->with('no','no');
         }
+
+    }
+
+    public function deneme() {
+        return view('homepage.deneme');
+    }
+
+    public function deneme_gonder() {
+
+        $club_user = new School();
+        $club_user->name = request('name');
+        $club_user->save();
+
 
     }
 
