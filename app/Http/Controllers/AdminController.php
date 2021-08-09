@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Club;
 use App\Project;
+use App\Rosette;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,81 @@ class AdminController extends Controller
         $club_project = Project::where('club_id','=',$_GET['club'])->get();
         $project_club = Club::where('id','=',$_GET['club'])->get();
         return view('admin.projects.index',compact('club_project','project_club'));
+    }
+
+    public function club_rosette()
+    {
+        $club_rosette = Rosette::where('club_id','=',$_GET['club'])->get();
+        $project_club = Club::where('id','=',$_GET['club'])->get();
+        return view('admin.clubs.rosette',compact('club_rosette','project_club'));
+    }
+
+    public function rosette_create()
+    {
+        $club_id = $_GET['club'];
+        return view('admin.clubs.rosette_create',compact('club_id'));
+    }
+
+    public function rosette_store(Request $request)
+    {
+        $this->validate(request(), array(
+            'name'=> 'required',
+        ));
+        $rosette = new Rosette();
+        $rosette->name = request('name');
+        $rosette->status = request('status');
+        $rosette->club_id = request('club_id');
+
+        if (request()->hasFile('logo')) {
+            $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('logo');
+            $dosya_adi = 'logo'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $rosette->logo = $dosya_yolu;
+            }
+        }
+        $rosette->save();
+        if ($rosette) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function rosette_update($id) {
+        $rosette = Rosette::findOrFail($id);
+        $rosette->name = request('name');
+        $rosette->status = request('status');
+
+        if (request()->hasFile('logo')) {
+            $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('logo');
+            $dosya_adi = 'logo'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $rosette->logo = $dosya_yolu;
+            }
+        }
+        $rosette->save();
+        if ($rosette) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function rosette_details($id) {
+        $rosette = Rosette::findOrFail($id);
+        return view('admin.clubs.rosette_details',compact('rosette'));
     }
 
     public function all_project(Request $request)

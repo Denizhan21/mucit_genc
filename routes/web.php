@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Öğretmen ve Yönetici ortak Route lar
-Route::group(['prefix'=>'mct_gnc_admin','middleware'=>['teacher']],function () {
+Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
 
     Route::get('/','AdminController@index')->name('admin.index');
     Route::get('logout','AdminController@logout')->name('admin.logout');
@@ -44,12 +44,18 @@ Route::group(['prefix'=>'mct_gnc_admin','middleware'=>['teacher']],function () {
     //Öğretmen Projeleri Sayfası
     Route::get('teacher_project','AdminController@teacher_project')->name('teacher_project');
 
+    //Kulüp Rozetleri
+    Route::get('club_rosette','AdminController@club_rosette')->name('club_rosette');
+    Route::get('rosette_details/{id}','AdminController@rosette_details')->name('rosette_details');
+    Route::get('rosette_create','AdminController@rosette_create')->name('rosette_create');
+    Route::post('rosette_store', 'AdminController@rosette_store')->name('rosette_store');
+
 
 
 });
 
 //Yönetici Route lar
-Route::group(['prefix'=>'mct_gnc_admin','middleware'=>'admin'],function () {
+Route::group(['prefix'=>'mct','middleware'=>'admin'],function () {
 
     //Kullanıcı İşlemleri
     Route::resource('users','UserController');
@@ -67,6 +73,7 @@ Route::group(['prefix'=>'mct_gnc_admin','middleware'=>'admin'],function () {
     Route::get('importExportView', 'MyController@importExportView');
     Route::get('export', 'MyController@export')->name('export');
     Route::post('import', 'MyController@import')->name('import');
+    Route::put('rosette_update/{id}','AdminController@rosette_update')->name('rosette_update');
 
 });
 

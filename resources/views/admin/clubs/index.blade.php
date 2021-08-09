@@ -20,6 +20,8 @@
                                 <th>Kulüp Katılım Linki</th>
                                 <th>Kayıtlı Öğrenciler</th>
                                 <th>Gönderilen Projeler</th>
+                                <th>Rozetler</th>
+                                <th>Platform Bilgileri</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
                             </tr>
@@ -34,6 +36,8 @@
                                     <td><a href="{{route('club_join',$clubs->code)}}">{{route('club_join',$clubs->code)}}</a></td>
                                     <td><a class="" href="{{route('club_user.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="" href="{{route('projects.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
+                                    <td><a class="" href="{{route('club_rosette','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
+                                    <td><a class="" href="#"><span class="label label-success">Git</span></a></td>
                                     <td><a class="btn btn-xs btn-warning" href="{{route('clubs.edit',$clubs->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
                                     <td>
                                         {!! Form::open(['method'=>'DELETE','action'=>['ClubController@destroy',$clubs->id],'style'=>'display:inline']) !!}

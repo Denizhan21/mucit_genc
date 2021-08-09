@@ -123,20 +123,11 @@
                         <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
-                    </a>
-                </li>
-
-
-                <li class="">
-                    <a href="{{route('teacher_club')}}">
-                        <i class="fa fa-calendar"></i> <span>Kayıtlı Öğrenciler</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
+                    </a>d
             </span>
                     </a>
                 </li>
             @endif
-
 
             @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="treeview">
