@@ -49,6 +49,9 @@ Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
     Route::get('rosette_details/{id}','AdminController@rosette_details')->name('rosette_details');
     Route::get('rosette_create','AdminController@rosette_create')->name('rosette_create');
     Route::post('rosette_store', 'AdminController@rosette_store')->name('rosette_store');
+    Route::get('rosette_student','AdminController@rosette_student')->name('rosette_student');
+    Route::get('rosette_add','AdminController@rosette_add')->name('rosette_add');
+    Route::post('rosette_add_store', 'AdminController@rosette_add_store')->name('rosette_add_store');
 
 
 

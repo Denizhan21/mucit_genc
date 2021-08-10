@@ -6,6 +6,7 @@ use App\Activity;
 use App\Club;
 use App\Project;
 use App\Rosette;
+use App\Rosette_student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,22 @@ class AdminController extends Controller
         return view('admin.clubs.rosette_create',compact('club_id'));
     }
 
+    public function rosette_add()
+    {
+        $rosette_id = $_GET['rosette'];
+        $rosette = Rosette::where('id','=',$_GET['rosette'])->first();
+
+        return view('admin.clubs.rosette_add',compact('rosette_id','rosette'));
+    }
+
+    public function rosette_student()
+    {
+        $rosette_id = $_GET['rosette'];
+        $rosette = Rosette::where('id','=',$_GET['rosette'])->get();
+        $rosette_student = Rosette_student::where('rosette_id','=',$_GET['rosette'])->get();
+        return view('admin.clubs.rosette_student',compact('rosette_id','rosette','rosette_student'));
+    }
+
     public function rosette_store(Request $request)
     {
         $this->validate(request(), array(
@@ -66,6 +83,33 @@ class AdminController extends Controller
             }
         }
         $rosette->save();
+        if ($rosette) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function rosette_add_store(Request $request)
+    {
+        $rosette = new Rosette_student();
+        $rosette->user_id = request('user_id');
+        $rosette->rosette_id = request('rosette_id');
+
+
+        $user_id = $rosette->user_id;
+        $rosette_id = $rosette->rosette_id;
+
+        $rosette_empty = Rosette_student::where('user_id','=',$user_id)->where('rosette_id','=',$rosette_id)->first();
+
+        if (empty($rosette_empty)) {
+            $rosette->save();
+        }else {
+            return redirect()->back()->with('nosd','nosd');
+        }
+
+
+
         if ($rosette) {
             return redirect()->back()->with('alert', 'alert');
         }else {

@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>{{$club_rosettes->name}}</td>
                                     <td><img width="200" src="/{{$club_rosettes->logo}}" alt="{{$club_rosettes->name}}"></td>
-                                    <td><a class="" href="{{route('rosette_details',$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
+                                    <td><a class="" href="{{route('rosette_student','rosette='.$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="" href="{{route('rosette_details',$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
                                 </tr>
                             @endforeach
