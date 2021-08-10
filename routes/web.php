@@ -52,6 +52,23 @@ Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
     Route::get('rosette_student','AdminController@rosette_student')->name('rosette_student');
     Route::get('rosette_add','AdminController@rosette_add')->name('rosette_add');
     Route::post('rosette_add_store', 'AdminController@rosette_add_store')->name('rosette_add_store');
+    Route::get('rosette_delete/{id}','AdminController@rosette_delete')->name('rosette_delete');
+    Route::put('rosette_update/{id}','AdminController@rosette_update')->name('rosette_update');
+
+
+    //Kulüp Platform Bilgileri
+    Route::get('club_platform','AdminController@club_platform')->name('club_platform');
+    Route::get('platform_details/{id}','AdminController@platform_details')->name('platform_details');
+    Route::get('platform_create','AdminController@platform_create')->name('platform_create');
+    Route::post('platform_store', 'AdminController@platform_store')->name('platform_store');
+    Route::put('platform_update/{id}','AdminController@platform_update')->name('platform_update');
+
+    //Kulüp Canlı Link Bilgileri
+    Route::get('club_link','AdminController@club_link')->name('club_link');
+    Route::get('link_details/{id}','AdminController@link_details')->name('link_details');
+    Route::get('link_create','AdminController@link_create')->name('link_create');
+    Route::post('link_store', 'AdminController@link_store')->name('link_store');
+    Route::put('link_update/{id}','AdminController@link_update')->name('link_update');
 
 
 
@@ -76,7 +93,7 @@ Route::group(['prefix'=>'mct','middleware'=>'admin'],function () {
     Route::get('importExportView', 'MyController@importExportView');
     Route::get('export', 'MyController@export')->name('export');
     Route::post('import', 'MyController@import')->name('import');
-    Route::put('rosette_update/{id}','AdminController@rosette_update')->name('rosette_update');
+
 
 });
 

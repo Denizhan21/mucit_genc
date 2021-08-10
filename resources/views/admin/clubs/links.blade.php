@@ -6,8 +6,8 @@
             <div class="box">
 
                 <div class="box-header with-border">
-                    @foreach($rosette as $project_clubs)
-                        <h4 class="box-title">Rozet Öğrencileri
+                    @foreach($project_club as $project_clubs)
+                        <h4 class="box-title">Kulüp Canlı Linkleri
 
                             ({{$project_clubs->name}})
 
@@ -15,7 +15,7 @@
 
                         <div class="pull-right">
 
-                            <a href="{{route('rosette_add','rosette='.$project_clubs->id)}}" type="button" class="btn btn-primary">Öğrenci Ekle</a>
+                            <a href="{{route('link_create','club='.$project_clubs->id)}}" type="button" class="btn btn-primary">Link Ekle</a>
 
                         </div>
                     @endforeach
@@ -24,13 +24,17 @@
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <tr>
-                                <th>Öğrenci Adı</th>
-                                <th>Sil</th>
+                                <th>Link</th>
+                                <th>Durum</th>
+                                <th>Herkese Açık/Kapalı</th>
+                                <th>Linke Git</th>
                             </tr>
-                            @foreach($rosette_student  as $key=>$club_rosettes)
+                            @foreach($club_link  as $key=>$club_links)
                                 <tr>
-                                    <td>{{$club_rosettes->student->name}}</td>
-                                    <td><a class="" href="{{route('rosette_delete',$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
+                                    <td>{{$club_links->link}}</td>
+                                    <td>{{$club_links->status==1?'Aktif':''}}   {{$club_links->status==0?'Pasif':''}}</td>
+                                    <td>{{$club_links->authority==1?'Açık':''}}   {{$club_links->authority==0?'Kapalı':''}}</td>
+                                    <td><a class="" href="{{route('link_details',$club_links->id)}}"><span class="label label-success">Git</span></a></td>
                                 </tr>
                             @endforeach
                         </table>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Club;
+use App\Link;
+use App\Platform;
 use App\Project;
 use App\Rosette;
 use App\Rosette_student;
@@ -37,10 +39,45 @@ class AdminController extends Controller
         return view('admin.clubs.rosette',compact('club_rosette','project_club'));
     }
 
+    public function club_link()
+    {
+        $club_link = Link::where('club_id','=',$_GET['club'])->get();
+        $project_club = Club::where('id','=',$_GET['club'])->get();
+        return view('admin.clubs.links',compact('club_link','project_club'));
+    }
+
+    public function club_platform()
+    {
+        $club_platform = Platform::where('club_id','=',$_GET['club'])->get();
+        $project_club = Club::where('id','=',$_GET['club'])->get();
+        return view('admin.clubs.platform',compact('club_platform','project_club'));
+    }
+
+    public function rosette_delete($id) {
+        $rosette = Rosette_student::destroy($id);
+        if ($rosette) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
     public function rosette_create()
     {
         $club_id = $_GET['club'];
         return view('admin.clubs.rosette_create',compact('club_id'));
+    }
+
+    public function link_create()
+    {
+        $club_id = $_GET['club'];
+        return view('admin.clubs.link_create',compact('club_id'));
+    }
+
+    public function platform_create()
+    {
+        $club_id = $_GET['club'];
+        return view('admin.clubs.platform_create',compact('club_id'));
     }
 
     public function rosette_add()
@@ -84,6 +121,56 @@ class AdminController extends Controller
         }
         $rosette->save();
         if ($rosette) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function link_store(Request $request)
+    {
+        $link = new Link();
+        $link->link = request('link');
+        $link->status = request('status');
+        $link->authority = request('authority');
+        $link->club_id = request('club_id');
+
+
+        $link->save();
+        if ($link) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function platform_store(Request $request)
+    {
+
+        $platform = new Platform();
+        $platform->user_name = request('user_name');
+        $platform->link = request('link');
+        $platform->club_id = request('club_id');
+        $platform->password = request('password');
+        $platform->status = request('status');
+        $platform->authority = request('authority');
+
+
+        if (request()->hasFile('images')) {
+            $this->validate(request(), array('images' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('images');
+            $dosya_adi = 'images'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $platform->images = $dosya_yolu;
+            }
+        }
+        $platform->save();
+        if ($platform) {
             return redirect()->back()->with('alert', 'alert');
         }else {
             return redirect()->back()->with('no', 'no');
@@ -143,9 +230,64 @@ class AdminController extends Controller
         }
     }
 
+    public function link_update($id) {
+        $link = Link::findOrFail($id);
+
+        $link->link = request('link');
+        $link->status = request('status');
+        $link->authority = request('authority');
+
+
+        $link->save();
+        if ($link) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
+    public function platform_update($id) {
+        $platform = Platform::findOrFail($id);
+        $platform->user_name = request('user_name');
+        $platform->password = request('password');
+        $platform->link = request('link');
+        $platform->status = request('status');
+        $platform->authority = request('authority');
+
+        if (request()->hasFile('images')) {
+            $this->validate(request(), array('images' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
+
+            $resim = request()->file('images');
+            $dosya_adi = 'images'.'-'.time().'.'.$resim->extension();
+
+            if ($resim->isValid()) {
+                $hedef_klasor = 'uploads/images';
+                $dosya_yolu = $hedef_klasor.'/'.$dosya_adi;
+                $resim->move($hedef_klasor,$dosya_adi);
+                $platform->images = $dosya_yolu;
+            }
+        }
+        $platform->save();
+        if ($platform) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
+    }
+
     public function rosette_details($id) {
         $rosette = Rosette::findOrFail($id);
         return view('admin.clubs.rosette_details',compact('rosette'));
+    }
+
+    public function link_details($id) {
+        $link = Link::findOrFail($id);
+        return view('admin.clubs.link_details',compact('link'));
+    }
+
+    public function platform_details($id) {
+        $platform = Platform::findOrFail($id);
+        return view('admin.clubs.platform_details',compact('platform'));
     }
 
     public function all_project(Request $request)

@@ -26,6 +26,7 @@
                             <tr>
                                 <th>Rozet Adı</th>
                                 <th>Logo</th>
+                                <th>Durum</th>
                                 <th>Öğrenciler</th>
                                 <th>Rozete Git</th>
                             </tr>
@@ -33,6 +34,7 @@
                                 <tr>
                                     <td>{{$club_rosettes->name}}</td>
                                     <td><img width="200" src="/{{$club_rosettes->logo}}" alt="{{$club_rosettes->name}}"></td>
+                                    <td>{{$club_rosettes->status==1?'Aktif':''}}   {{$club_rosettes->status==0?'Pasif':''}}</td>
                                     <td><a class="" href="{{route('rosette_student','rosette='.$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="" href="{{route('rosette_details',$club_rosettes->id)}}"><span class="label label-success">Git</span></a></td>
                                 </tr>
