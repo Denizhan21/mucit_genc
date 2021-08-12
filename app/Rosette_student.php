@@ -13,7 +13,7 @@ class Rosette_student extends Model
         return $this->belongsTo('App\User','user_id');
     }
 
-    public function clubs() {
-        return $this->belongsTo('App\Club','club_id');
+    public function rosette() {
+        return $this->belongsTo('App\Rosette','rosette_id');
     }
 }

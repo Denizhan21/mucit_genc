@@ -144,6 +144,9 @@ Route::get('club_contact/{id}','HomeController@club_contact')->name('club_contac
 //Kulüp Soru Gönderme
 Route::post('club_contact_store', 'HomeController@club_contact_store')->name('club_contact_store');
 
+//Rozetlerim Sayfası
+Route::get('rosette', 'HomeController@rosette')->name('rosette');
+
 //İletişim Sayfası
 Route::get('contact','HomeController@contact')->name('contact');
 

@@ -13,6 +13,7 @@ use App\News;
 use App\Platform;
 use App\Project;
 use App\Rating;
+use App\Rosette_student;
 use App\School;
 use App\Teacher_comment;
 use Illuminate\Database\Eloquent\Model;
@@ -427,6 +428,15 @@ class HomeController extends Controller
         $platform = Platform::where('club_id','=',$id)->where('status','=',1)->get();
         return view('homepage.platform_club',compact('platform','clubs'));
 
+    }
+
+    public function rosette() {
+
+        $login = Auth::id();
+        $rosette = Rosette_student::where('user_id','=',$login)->get();
+
+
+        return view('homepage.rosette',compact('rosette'));
     }
 
 }
