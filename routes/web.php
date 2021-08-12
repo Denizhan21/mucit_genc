@@ -135,6 +135,9 @@ Route::get('club_view','HomeController@club_view')->name('club_view');
 //Kulüp Detay Sayfası
 Route::get('clubs/{id}','HomeController@clubs_details')->name('clubs_details');
 
+//Kulüp Platform Bilgileri Sayfası
+Route::get('platform_club/{id}','HomeController@platform_club')->name('platform_club');
+
 //Kulüp İletişim Sayfası
 Route::get('club_contact/{id}','HomeController@club_contact')->name('club_contact');
 

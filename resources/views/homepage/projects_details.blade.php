@@ -14,9 +14,9 @@
                                             @auth
 
                                         @if(!empty($projects->student->avatar))
-                                            <img src="/{{$projects->student->avatar}}" alt="{{$projects->student->name}}">
+                                            <img style="width: 44px;height: 44px" src="/{{$projects->student->avatar}}" alt="{{$projects->student->name}}">
                                         @else
-                                            <img src="/homepage/media/figure/chat_10.jpg" alt="{{$projects->student->name}}">
+                                            <img  src="/homepage/media/figure/chat_10.jpg" alt="{{$projects->student->name}}">
                                         @endif
 
                                             @else
@@ -55,7 +55,7 @@
 
 
 
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                  {{--  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
 
                                         <div class="carousel-indicators">
@@ -92,11 +92,11 @@
 
 
                                     </div>
+--}}
 
 
 
-
-                                {{--    <div id="demo" class="carousel slide" data-ride="carousel">
+                                    <div id="demo" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             @foreach(json_decode($projects->content) as $key=>$image)
                                                 <div class="carousel-item {{$key==0?'active':''}}">
@@ -110,7 +110,7 @@
                                         <a class="carousel-control-next" href="#demo" data-slide="next">
                                             <span class="carousel-control-next-icon"></span>
                                         </a>
-                                    </div>--}}
+                                    </div>
 
 
 
@@ -438,8 +438,7 @@
 @endsection
 
 @section('css')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 @endsection
 
 @section('js')

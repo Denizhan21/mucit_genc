@@ -8,7 +8,9 @@ use App\Club_contact;
 use App\Club_user;
 use App\Comment;
 use App\Contact;
+use App\Link;
 use App\News;
+use App\Platform;
 use App\Project;
 use App\Rating;
 use App\School;
@@ -183,7 +185,9 @@ class HomeController extends Controller
 
         $clubs_projects = Project::where('club_id','=',$id)->where('status','=',1)->get();
 
-        return view('homepage.clubs_details',compact('clubs','clubs_users','clubs_projects','club'));
+        $club_link = Link::where('club_id','=',$id)->where('status','=',1)->get();
+
+        return view('homepage.clubs_details',compact('clubs','clubs_users','clubs_projects','club','club_link'));
     }
 
     public function club_contact($id)
@@ -414,6 +418,14 @@ class HomeController extends Controller
         $club_user->name = request('name');
         $club_user->save();
 
+
+    }
+
+    public function platform_club($id) {
+        $clubs = Club::where('id',$id)->firstOrFail();
+
+        $platform = Platform::where('club_id','=',$id)->where('status','=',1)->get();
+        return view('homepage.platform_club',compact('platform','clubs'));
 
     }
 

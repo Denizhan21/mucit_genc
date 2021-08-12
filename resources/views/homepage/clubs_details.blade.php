@@ -80,6 +80,27 @@
                     </li>
 
                 </ul>
+
+
+
+                    <ul class="search-list">
+
+                        <li class="search-input">
+                            <div class="widget ">
+                                <a href="{{route('platform_club',$clubs->id)}}" class="item-btn">
+                                    <span class="btn-text">Platform Bilgilerine Git</span>
+                                    <span class="btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
+                                        <path fill-rule="evenodd" d="M16.671,9.998 L12.997,9.998 L16.462,6.000 L5.000,6.000 L5.000,4.000 L16.462,4.000 L12.997,0.002 L16.671,0.002 L21.003,5.000 L16.671,9.998 ZM17.000,5.379 L17.328,5.000 L17.000,4.621 L17.000,5.379 ZM-0.000,4.000 L3.000,4.000 L3.000,6.000 L-0.000,6.000 L-0.000,4.000 Z" />
+                                    </svg>
+                                </span>
+                                </a>
+                            </div>
+
+                        </li>
+                    </ul>
+
+
                 @if($clubs->status=='1')
                 <ul class="search-list">
 
@@ -99,6 +120,62 @@
                 </ul>
                 @endif
             </div>
+
+
+
+
+
+                @if (Route::has('login'))
+                    @auth
+                        @php
+
+                            $user_club = \App\Club_user::where('club_id','=',$clubs->id)->where('status','=','1')->where('user_id','=',\Illuminate\Support\Facades\Auth::id())->first();
+                        @endphp
+                @foreach($club_link as $key=>$club_links)
+                            @if(!empty($user_club)  OR  $club_links->authority == 1)
+                <div class="newsfeed-search">
+                    <ul class="member-list">
+
+                        <li class="active-member">
+                            <a href="{{$club_links->link}}">
+                                <span class="member-text">
+                                    Canlı Link {{$key+1}}:
+                                </span>
+                                <span class="member-count">{{$club_links->link}}</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                            @endif
+                @endforeach
+                    @else
+                        @foreach($club_link as $key=>$club_links)
+                            @if($club_links->authority == 1)
+                                <div class="newsfeed-search">
+                                    <ul class="member-list">
+
+                                        <li class="active-member">
+                                            <a href="{{$club_links->link}}">
+                                <span class="member-text">
+                                    Canlı Link {{$key+1}}:
+                                </span>
+                                                <span class="member-count">{{$club_links->link}}</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            @endif
+                        @endforeach
+                    @endauth
+                @endif
+
+
+
+
 
 
 
@@ -167,7 +244,7 @@
                                     @if (Route::has('login'))
                                         @auth
                                     @if(!empty($club_projects->student->avatar))
-                                        <img src="/{{$club_projects->student->avatar}}" alt="{{$club_projects->student->name}}">
+                                        <img style="width: 44px;height: 44px" src="/{{$club_projects->student->avatar}}" alt="{{$club_projects->student->name}}">
                                     @else
                                     <img src="/homepage/media/figure/chat_10.jpg" alt="{{$club_projects->student->name}}">
                                         @endif
@@ -210,7 +287,7 @@
                         </div>
                         <div class="post-body">
                             <p><b>{{$club_projects->name}}</b></p>
-                            <p>{{$club_projects->description}}</p>
+                            <p>{!! $club_projects->description !!}</p>
 
 
 
@@ -218,7 +295,7 @@
                             @if($club_projects->type=='Fotoğraf')
 
 
-                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                              {{--  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
 
                                     <div class="carousel-indicators">
@@ -254,11 +331,11 @@
                                     </button>
 
 
-                                </div>
+                                </div>--}}
 
 
 
-                {{--            <div id="demo" class="carousel slide" data-ride="carousel">
+                            <div id="demo" class="carousel slide" data-ride="carousel">
 
 
                                 <div class="carousel-inner">
@@ -277,10 +354,12 @@
                                     <span class="carousel-control-next-icon"></span>
                                 </a>
 
-                            </div>--}}
+                            </div>
 
                             @elseif($club_projects->type=='Video')
                                 <img style="width: 710px;height: 400px" src="/{{$club_projects->photo}}" alt="Groups">
+                                <br><br><br>
+                                <hr>
                                 <?php
                                 $metin  = $club_projects->content;
                                 $eski   = "view?usp=sharing";
@@ -290,10 +369,14 @@
                                 <iframe src="{{$metin}}" frameborder="0" width="710" height="400"></iframe>
                             @elseif($club_projects->type=='YouTube')
                                 <img style="width: 710px;height: 400px" src="/{{$club_projects->photo}}" alt="Groups">
+                                <br><br><br>
+                                <hr>
 
                                 <iframe src="{{$club_projects->content}}" frameborder="0" width="710" height="400"></iframe>
                             @elseif($club_projects->type=='Power Point')
                                 <img style="width: 710px;height: 400px" src="/{{$club_projects->photo}}" alt="Groups">
+                                <br><br><br>
+                                <hr>
                                 <?php
                                 $metin  = $club_projects->content;
                                 $eski   = "view?usp=sharing";
@@ -466,7 +549,7 @@
                                         <div class="item-img">
                                             <a href="#">
                                                 @if(!empty($student->student->avatar))
-                                                    <img src="/{{$student->student->avatar}}" alt="Chat">
+                                                    <img style="width: 44px; height: 44px" src="/{{$student->student->avatar}}" alt="Chat">
                                                 @else
                                                 <img src="/homepage/media/figure/chat_1.jpg" alt="Chat">
 
@@ -539,12 +622,20 @@
 @endsection
 
 @section('css')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{{--
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+--}}
+
+
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+   {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+--}}
 @endsection
 
