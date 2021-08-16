@@ -322,7 +322,7 @@
                                             @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
 
                                                 <li><a href="#">Projelerim</a></li>
-                                                <li><a href="#">Rozetlerim</a></li>
+                                                <li><a href="{{route('rosette')}}">Rozetlerim</a></li>
 
                                                 @endif
 
