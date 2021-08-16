@@ -40,7 +40,7 @@
                     </div>
                     <div class="box-footer">
                         <a href="{{route('schools.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                        <button type="submit" class="btn btn-success pull-right">Okul Ekle</button>
+                        <button type="submit" class="btn btn-success pull-right">Rozet Ekle</button>
                     </div>
                                     {!! Form::close() !!}
 {{--                </form>--}}

@@ -59,5 +59,25 @@
 @endsection
 
 @section('js')
+    <script>
+        @if (session('alert'))
 
+        swal({
+            title:"Başarılı",
+            text:"Form Başarıyla Gönderildi.",
+            type: "success",
+            timer:2000,
+            showConfirmButton: false
+        });
+        @endif
+        @if (session('no'))
+        swal({
+            title:"Hata",
+            text:"Form Gönderilemedi",
+            type: "warning",
+            timer:2000,
+            showConfirmButton: false
+        });
+        @endif
+    </script>
 @endsection

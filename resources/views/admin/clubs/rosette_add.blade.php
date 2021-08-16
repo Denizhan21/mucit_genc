@@ -47,7 +47,7 @@
 
                 <div class="box-footer">
                     <a href="{{route('schools.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                    <button type="submit" class="btn btn-success pull-right">Okul Ekle</button>
+                    <button type="submit" class="btn btn-success pull-right">Rozet Ekle</button>
                 </div>
                 {!! Form::close() !!}
                 {{--                </form>--}}
@@ -62,7 +62,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Okul Eklendi",
+            text:"Rozet Eklendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -71,7 +71,7 @@
         @if (session('no'))
         swal({
             title:"Hata",
-            text:"Okul Eklenemedi",
+            text:"Rozet Eklenemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

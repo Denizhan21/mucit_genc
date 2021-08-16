@@ -40,9 +40,14 @@
                                         <button id="gameStart" class="submit-btn" type="submit">Kaydol</button>
                                     </div>
                                         @else
+
+                                        @if(\Illuminate\Support\Facades\Auth::id() == $club->teacher)
+                                            Zaten üyesiniz
+                                            @else
+
                                         yetkiniz yok
                                         @endif
-
+                                        @endif
                                 @else
 
                                     <div class="alert alert-info">

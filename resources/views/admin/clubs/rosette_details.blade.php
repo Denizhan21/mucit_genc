@@ -45,7 +45,7 @@
                     </div>
                     <div class="box-footer">
                         <a href="{{route('schools.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                        <button type="submit" class="btn btn-success pull-right">Okul Düzenle</button>
+                        <button type="submit" class="btn btn-success pull-right">Rozet Düzenle</button>
                     </div>
                                     {!! Form::close() !!}
 {{--                </form>--}}
