@@ -186,6 +186,9 @@ Route::get('migrate', function () {
 });
 
 
+//Sosyal Medya
+Route::get('social','HomeController@social')->name('social');
+
 //Duyuru Onaylama ve Onay Kaldırma İşlemleri
 Route::get('activity_onayla/{id}','AdminController@activity_onayla')->name('activity_onayla');
 Route::get('activity_onaykaldir/{id}','AdminController@activity_onaykaldir')->name('activity_onaykaldir');

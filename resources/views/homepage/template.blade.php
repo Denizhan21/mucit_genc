@@ -71,6 +71,9 @@
                                         <a href="{{route('project_view')}}" class="menu-link active">Projeler</a>
                                     </li>
                                     <li class="header-nav-item">
+                                        <a href="{{route('social')}}" class="menu-link active">Sosyal Medya</a>
+                                    </li>
+                                    <li class="header-nav-item">
                                         <a href="{{route('activity_view')}}" class="menu-link active">Duyurular</a>
                                     </li>
                                     <li class="header-nav-item">
@@ -399,16 +402,6 @@
             </header>
         @endauth
     @endif
-
-
-
-
-
-
-
-
-
-
 
     @yield('content')
 

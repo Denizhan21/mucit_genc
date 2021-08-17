@@ -60,7 +60,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Okul Düzenlendi",
+            text:"Rozet Düzenlendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -69,7 +69,7 @@
         @if (session('no'))
         swal({
             title:"Hata",
-            text:"Okul Düzenlenemedi",
+            text:"Rozet Düzenlenemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

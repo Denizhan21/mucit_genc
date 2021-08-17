@@ -64,6 +64,7 @@
                                 <input id="name_name_name" name="name" type="text" class="form-control name_name" placeholder="Projenizin Adını Giriniz">
                             </div>
 
+
                             <div class="col-lg-12 form-group" id="video_area" style="display: none">
 
                                 <div class="alert alert-warning">
@@ -78,7 +79,7 @@
                                 </div>
 
                                 <label>Drive Linkinizi Giriniz:</label>
-                                <input name="content" type="text" class="form-control" placeholder="Video için Drive Linkinizi Giriniz">
+                                <input name="content" type="text" class="form-control">
 
                                 <div class="col-lg-12 form-group" >
                                     <label>Proje Kapak Fotoğrafınızı Seçiniz:</label>
@@ -86,6 +87,7 @@
                                 </div>
 
                             </div>
+
 
                                 <div class="col-lg-12 form-group" id="youtube_area" style="display: none">
 

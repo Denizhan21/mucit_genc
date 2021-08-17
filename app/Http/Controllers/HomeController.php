@@ -355,24 +355,24 @@ class HomeController extends Controller
         $like->rateable_type = request('rateable_type');
         $like->rating = request('rating');
         $like->save();
-        /*if ($like) {
+        if ($like) {
             return redirect()->back()->with('alertsd','alertsd');
         }else{
             return redirect()->back()->with('nosd','nosd');
-        }*/
-        return response()->json(['success'=>$like]);
+        }
+//        return response()->json(['success'=>$like]);
     }
 
     public function like_send_update($id) {
         $like = Rating::findOrFail($id);
         $like->rateable_type = request('rateable_type');
         $like->save();
-       /* if ($like) {
-            return redirect()->back();
+        if ($like) {
+            return redirect()->back()->with('alertsd','alertsd');
         }else{
-            return redirect()->back();
-        }*/
-        return response()->json(['success'=>$like]);
+            return redirect()->back()->with('nosd','nosd');
+        }
+//        return response()->json(['success'=>$like]);
     }
 
     public function club_join($code) {
@@ -437,6 +437,12 @@ class HomeController extends Controller
 
 
         return view('homepage.rosette',compact('rosette'));
+    }
+
+    public function social() {
+
+        $social = Project::where('status','=','1')->orderBy('created_at','desc')->get();
+        return view('homepage.social',compact('social'));
     }
 
 }
