@@ -80,6 +80,11 @@ Route::group(['prefix'=>'mct','middleware'=>'admin'],function () {
     //Kullanıcı İşlemleri
     Route::resource('users','UserController');
 
+    //Gelen Mesaj İşlemleri
+    Route::get('contact_index','AdminController@contact_index')->name('contact_index');
+    Route::get('contact_edit/{id}','AdminController@contact_edit')->name('contact_edit');
+    Route::get('contact_update/{id}','AdminController@contact_update')->name('contact_update');
+
     //Gündem İşlemleri
     Route::resource('news','NewsController');
 

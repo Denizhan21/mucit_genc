@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Club;
+use App\Contact;
 use App\Link;
 use App\Platform;
 use App\Project;
@@ -449,5 +450,27 @@ class AdminController extends Controller
         $club = Club::where('teacher','=',Auth::id())->get();
         $project = Project::all();
         return view('admin.projects.teacher_project',compact('project','club'));
+    }
+
+    public function contact_index() {
+        $contact_index = Contact::orderBy('status','asc')->orderBy('created_at','desc')->get();
+        return view('admin.contacts.index',compact('contact_index'));
+    }
+
+    public function contact_edit($id) {
+        $contact_edit = Contact::findOrFail($id);
+        return view('admin.contacts.edit',compact('contact_edit'));
+
+    }
+
+    public function contact_update(Request $request, $id) {
+        $contact = Contact::findOrFail($id);
+        $contact->status = request('status');
+        $contact->save();
+        if ($contact) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
     }
 }

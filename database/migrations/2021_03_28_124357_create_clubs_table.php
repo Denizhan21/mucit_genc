@@ -29,6 +29,7 @@ class CreateClubsTable extends Migration
             $table->string('type')->nullable();
             $table->text('text')->nullable();
             $table->text('content')->nullable();
+            $table->string('permission')->nullable();
             $table->timestamps();
         });
     }

@@ -52,7 +52,11 @@
                         </div>
                     </div>
 
-
+                    @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin')
+                        <input type="hidden" name="permission" value="1">
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->authority=='teacher')
+                        <input type="hidden" name="permission" value="0">
+                    @endif
 
                     <div class="demo-radio-button">
                         <div class="form-group">

@@ -77,6 +77,8 @@ class ClubController extends Controller
         $club->text         = request('text');
         $club->content      = request('content');
         $club->type      = request('type');
+        $club->permission      = request('permission');
+
 
         if (request()->hasFile('logo')) {
             $this->validate(request(), array('logo' => 'image|mimes:png,jpg,jpeg,gif|max:2048'));
