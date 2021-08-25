@@ -348,6 +348,32 @@ class HomeController extends Controller
         }
     }
 
+    public function rating_send() {
+        $like = new Rating();
+        $like->user_id = Auth::user()->id;
+        $like->rateable_id = request('rateable_id');
+        $like->rateable_type = request('rateable_type');
+        $like->rating = 1;
+        $like->save();
+        if ($like) {
+            return redirect()->back()->with('alertsd','alertsd');
+        }else{
+            return redirect()->back()->with('nosd','nosd');
+        }
+
+    }
+
+    public function rating_send_update($id) {
+        $like = Rating::findOrFail($id);
+        $like->rateable_type = request('rateable_type');
+        $like->save();
+        if ($like) {
+            return redirect()->back()->with('alertsd','alertsd');
+        }else{
+            return redirect()->back()->with('nosd','nosd');
+        }
+    }
+
     public function like_send() {
         $like = new Rating();
         $like->user_id = request('user_id');

@@ -31,7 +31,7 @@ class ClubController extends Controller
         }
 
 
-        $club = Club::all();
+        $club = Club::where('permission','=','1')->get();
 
         $count = $query->count();
 

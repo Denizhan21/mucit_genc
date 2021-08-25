@@ -87,6 +87,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('clubs.index')}}"><i class="fa fa-circle-thin"></i>Kulüpler</a></li>
                         <li><a href="{{route('clubs.create')}}"><i class="fa fa-circle-thin"></i>Kulüp Ekle</a></li>
+                        <li><a href="{{route('clubs.create')}}"><i class="fa fa-circle-thin"></i>Onay Bekleyen Kulüpler</a></li>
                     </ul>
                 </li>
             @endif
@@ -123,7 +124,7 @@
                         <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
-                    </a>d
+                    </a>
             </span>
                     </a>
                 </li>

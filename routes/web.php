@@ -162,6 +162,9 @@ Route::post('contact_store', 'HomeController@contact_store')->name('contact_stor
 Route::post('comment_send', 'HomeController@comment_send')->name('comment_send');
 
 //Like Gönderme İşlemleri
+Route::post('rating_send', 'HomeController@rating_send')->name('rating_send');
+Route::put('rating_send_update/{id}','HomeController@rating_send_update')->name('rating_send_update');
+
 Route::post('like_send', 'HomeController@like_send')->name('like_send');
 Route::put('like_send_update/{id}','HomeController@like_send_update')->name('like_send_update');
 

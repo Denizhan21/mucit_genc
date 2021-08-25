@@ -177,7 +177,7 @@
 
 
                                             </div>
-                                            <div class="meta-text">{{count($rating)}}</div>
+                                            <div class="meta-text"><div id="total_rating">{{count($rating)}}</div></div>
 
                                         </div>
                                     </div>
@@ -189,7 +189,9 @@
                                     <li class="post-react">
                                         <a href="#">
                                             @if(empty($rating_login))
-                                            <i class="icofont-thumbs-up"></i>
+
+                                                <div id="user_rate_result"><i class="icofont-thumbs-up"></i></div>
+
                                             @elseif($rating_login->rateable_type==1)
                                             <img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">
                                             @elseif($rating_login->rateable_type==2)
@@ -204,12 +206,12 @@
                                             <img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="Like">
                                             @endif
 
-                                            Emoji Bırak!</a>
+                                        </a>
                                         <ul class="react-list emojies">
 
                                          @if(!empty($rating_login))
 {{--                                                {!! Form::model($rating_login,['route'=>['like_send_update',$rating_login->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}--}}
-                                                <form method="PUT" action="{{route('like_send_update',$rating_login->id)}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxeklem();" id="ajax-formm">
+                                               {{-- <form method="PUT" action="{{route('like_send_update',$rating_login->id)}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxeklem();" id="ajax-formm">
                                                     {{csrf_field()}}
                                                 <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}}><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
                                                 <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}}><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
@@ -217,25 +219,34 @@
                                                 <li><label class="like-button" for="4"><input id="4" type="radio" name="rateable_type" value="4" {{$rating_login->rateable_type==4?'checked':''}}><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
                                                 <li><label class="like-button" for="5"><input id="5" type="radio" name="rateable_type" value="5" {{$rating_login->rateable_type==5?'checked':''}}><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
                                                 <li><label class="like-button" for="6"><input id="6" type="radio" name="rateable_type" value="6" {{$rating_login->rateable_type==6?'checked':''}}><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
-                                                <li><button class="btn btn-white" type="submit">Gönder</button></li>
+                                                <li><button class="btn btn-white" type="submit">Gönder</button></li>--}}
 {{--                                                {!! Form::close() !!}--}}
-                                                </form>
+{{--                                                </form>--}}
+
+
+                                                <fieldset id="emoji_area_update" onChange="return rating_score_update()">
+                                                    <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}} ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}} ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="3"><input id="3" type="radio" name="rateable_type" value="3" {{$rating_login->rateable_type==3?'checked':''}} ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="4"><input id="4" type="radio" name="rateable_type" value="4" {{$rating_login->rateable_type==4?'checked':''}} ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="5"><input id="5" type="radio" name="rateable_type" value="5" {{$rating_login->rateable_type==5?'checked':''}} ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="6"><input id="6" type="radio" name="rateable_type" value="6" {{$rating_login->rateable_type==6?'checked':''}} ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
+                                                </fieldset>
+
+
                                             @else
-{{--                                                {!! Form::open(['route'=>['like_send'],'method'=>'POST','files'=>'true','class'=>'form-horizontal']) !!}--}}
-                                                <form method="POST" action="{{route('like_send')}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxekle();" id="ajax-form">
-                                                    {{csrf_field()}}
-                                                <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                                <input type="hidden" name="rateable_id" value="{{$projects->id}}">
-                                                <input type="hidden" name="rating" value="1">
-                                                <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
-                                                <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
-                                                <li><label class="like-button" for="3"><input id="3" type="radio" name="rateable_type" value="3" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
-                                                <li><label class="like-button" for="4"><input id="4" type="radio" name="rateable_type" value="4" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
-                                                <li><label class="like-button" for="5"><input id="5" type="radio" name="rateable_type" value="5" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
-                                                <li><label class="like-button" for="6"><input id="6" type="radio" name="rateable_type" value="6" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
-                                                <li><button class="btn btn-white" type="submit">Gönder</button></li>
-{{--                                                {!! Form::close() !!}--}}
-                                                </form>
+
+                                                <fieldset id="emoji_area" onChange="return rating_score()">
+                                                    <input type="hidden" id="rateable_id" name="rateable_id" value="{{$projects->id}}">
+                                                    <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="3"><input id="3" type="radio" name="rateable_type" value="3" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="4"><input id="4" type="radio" name="rateable_type" value="4" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="5"><input id="5" type="radio" name="rateable_type" value="5" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
+                                                    <li><label class="like-button" for="6"><input id="6" type="radio" name="rateable_type" value="6" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
+                                                </fieldset>
+
+
                                             @endif
 
 
@@ -445,63 +456,144 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 @if(!empty($rating_login))
-   <script>
-       function ajaxeklem() {
-           var form = $("#ajax-formm");
-           var form_data = $("#ajax-formm").serialize();
-           $.ajaxSetup({
-               headers: {
-                   'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-               }
-           });
-           $.ajax({
-               type:"PUT",
-               url:"{{route('like_send_update',$rating_login->id)}}",
-               data: form_data,
-               success:function () {
-                   swal({
-                       title:"Başarılı",
-                       text:"Emojiniz Düzenlendi",
-                       type: "success",
-                       timer:2000,
-                       showConfirmButton: false
-                   });
-                   setInterval('window.location.reload()',2500);
-               }
-           });
-           return false;
-       }
-   </script>
+{{--   <script>--}}
+{{--       function ajaxeklem() {--}}
+{{--           var form = $("#ajax-formm");--}}
+{{--           var form_data = $("#ajax-formm").serialize();--}}
+{{--           $.ajaxSetup({--}}
+{{--               headers: {--}}
+{{--                   'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+{{--               }--}}
+{{--           });--}}
+{{--           $.ajax({--}}
+{{--               type:"PUT",--}}
+{{--               url:"{{route('like_send_update',$rating_login->id)}}",--}}
+{{--               data: form_data,--}}
+{{--               success:function () {--}}
+{{--                   swal({--}}
+{{--                       title:"Başarılı",--}}
+{{--                       text:"Emojiniz Düzenlendi",--}}
+{{--                       type: "success",--}}
+{{--                       timer:2000,--}}
+{{--                       showConfirmButton: false--}}
+{{--                   });--}}
+{{--                   setInterval('window.location.reload()',2500);--}}
+{{--               }--}}
+{{--           });--}}
+{{--           return false;--}}
+{{--       }--}}
+{{--   </script>--}}
    @endif
 
 
    <script>
-       function ajaxekle() {
-           var form = $("#ajax-form");
-           var form_data = $("#ajax-form").serialize();
-           $.ajaxSetup({
-               headers: {
-                   'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+
+       function rating_score_update ( txt_rating ) {
+
+           var rateable_type = $("input[name=rateable_type]:checked").val();
+           $.ajax( {
+               type    : "PUT",
+               data: {
+                   "rateable_id" : $("#rateable_id").val(),
+                   "rateable_type" : rateable_type,
+                   "_token": "{{ csrf_token() }}",
+               },
+               url     : "{{route('rating_send_update',$projects->id)}}",
+               success : function (txt_rating)
+               {
+
+                   document.getElementById('total_rating').innerHTML = {{count($rating)+1}};
+
+                   if(rateable_type == 1) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">';
+                   if(rateable_type == 2) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="celebrate">';
+                   if(rateable_type == 3) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="support">';
+                   if(rateable_type == 4) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/love.svg" alt="love">';
+                   if(rateable_type == 5) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="insightful">';
+                   if(rateable_type == 6) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="curious">';
+
+                   document.getElementById('user_rate_result').innerHTML = emoji;
+
+                   document.getElementById('emoji_area_update').style.display = "none";
+
+               },
+               error   : function ( xhr ) {
+                   alert( "HATA" );
                }
-           });
-           $.ajax({
-               type:"POST",
-               url:"{{route('like_send')}}",
-               data: form_data,
-               success:function () {
-                   swal({
-                       title:"Başarılı",
-                       text:"Emojiniz Eklendi",
-                       type: "success",
-                       timer:2000,
-                       showConfirmButton: false
-                   });
-                 setInterval('window.location.reload()',2500);
-                   // document.getElementById("ajax-form").reset();
-               }
-           });
+
+           } );
            return false;
        }
+
+
+
+
+
+
+       function rating_score ( txt_rating ) {
+
+           var rateable_type = $("input[name=rateable_type]:checked").val()
+           $.ajax( {
+               type    : "POST",
+               data: {
+               "rateable_id" : $("#rateable_id").val(),
+               "rateable_type" : rateable_type,
+               "_token": "{{ csrf_token() }}",
+               },
+               url     : "{{route('rating_send')}}",
+               success : function (txt_rating)
+               {
+
+                   document.getElementById('total_rating').innerHTML = {{count($rating)+1}};
+
+                   if(rateable_type == 1) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">';
+                   if(rateable_type == 2) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="celebrate">';
+                   if(rateable_type == 3) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="support">';
+                   if(rateable_type == 4) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/love.svg" alt="love">';
+                   if(rateable_type == 5) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="insightful">';
+                   if(rateable_type == 6) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="curious">';
+
+                   document.getElementById('user_rate_result').innerHTML = emoji;
+
+                   document.getElementById('emoji_area').style.display = "none";
+
+               },
+               error   : function ( xhr ) {
+                   alert( "HATA OLUŞTU" );
+               }
+
+       } );
+           return false;
+       }
+
+       {{--function ajaxekle() {--}}
+       {{--    var form = $("#ajax-form");--}}
+       {{--    var form_data = $("#ajax-form").serialize();--}}
+       {{--    $.ajaxSetup({--}}
+       {{--        headers: {--}}
+       {{--            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+       {{--        }--}}
+       {{--    });--}}
+       {{--    $.ajax({--}}
+       {{--        type:"POST",--}}
+       {{--        url:"{{route('like_send')}}",--}}
+       {{--        data: form_data,--}}
+       {{--        success:function () {--}}
+       {{--            swal({--}}
+       {{--                title:"Başarılı",--}}
+       {{--                text:"Emojiniz Eklendi",--}}
+       {{--                type: "success",--}}
+       {{--                timer:2000,--}}
+       {{--                showConfirmButton: false--}}
+       {{--            });--}}
+       {{--          setInterval('window.location.reload()',2500);--}}
+       {{--            // document.getElementById("ajax-form").reset();--}}
+       {{--        }--}}
+       {{--    });--}}
+       {{--    return false;--}}
+       {{--}--}}
+
+
+
    </script>
 
 
