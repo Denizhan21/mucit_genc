@@ -11,18 +11,18 @@
                     {{$news->title}}
                         @endif
                 </h1>
-{{--                <p> @if(!empty($news))  {!! substr($news->content,0,50) !!}... @endif</p>--}}
+                <p> @if(!empty($news))  {!! substr($news->content,0,50) !!}... @endif</p>
 
-{{--                <div class="item-number">--}}
-{{--                    @if(!empty($news))--}}
-{{--                @php--}}
-{{--                    setlocale(LC_TIME, "turkish");--}}
-{{--                    setlocale(LC_ALL,'turkish');--}}
-{{--                    echo iconv('latin5','utf-8',strftime('%B',strtotime($news->created_at)));--}}
-{{--                @endphp--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-{{--                <div class="conn-people">Ayının Gündemi</div>--}}
+                <div class="item-number">
+                    @if(!empty($news))
+                @php
+                    setlocale(LC_TIME, "turkish");
+                    setlocale(LC_ALL,'turkish');
+                    echo iconv('latin5','utf-8',strftime('%B',strtotime($news->created_at)));
+                @endphp
+                    @endif
+                </div>
+                <div class="conn-people">Ayının Gündemi</div>
                 @if(!empty($news))
                 <a href="/news/{{$news->id}}" class="button-slide">
                     @endif
