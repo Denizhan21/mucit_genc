@@ -8,7 +8,7 @@
             <div class="hero-content" data-sal="zoom-out" data-sal-duration="1000">
                 <h1 class="item-title">
                     @if(!empty($news))
-                    {{$news->title}}sadfsgdf
+                    {{$news->title}}
                         @endif
                 </h1>
 {{--                <p> @if(!empty($news))  {!! substr($news->content,0,50) !!}... @endif</p>--}}
