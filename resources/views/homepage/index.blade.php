@@ -8,25 +8,25 @@
             <div class="hero-content" data-sal="zoom-out" data-sal-duration="1000">
                 <h1 class="item-title">
                     @if(!empty($news))
-                    {{$news->title}}
+                    {{$news->title}}sadfsgdf
                         @endif
                 </h1>
-                <p> @if(!empty($news))  {!! substr($news->content,0,50) !!}... @endif</p>
+{{--                <p> @if(!empty($news))  {!! substr($news->content,0,50) !!}... @endif</p>--}}
 
-                <div class="item-number">
-                    @if(!empty($news))
-                @php
-                    setlocale(LC_TIME, "turkish");
-                    setlocale(LC_ALL,'turkish');
-                    echo iconv('latin5','utf-8',strftime('%B',strtotime($news->created_at)));
-                @endphp
-                    @endif
-                </div>
-                <div class="conn-people">Ayının Gündemi</div>
+{{--                <div class="item-number">--}}
+{{--                    @if(!empty($news))--}}
+{{--                @php--}}
+{{--                    setlocale(LC_TIME, "turkish");--}}
+{{--                    setlocale(LC_ALL,'turkish');--}}
+{{--                    echo iconv('latin5','utf-8',strftime('%B',strtotime($news->created_at)));--}}
+{{--                @endphp--}}
+{{--                    @endif--}}
+{{--                </div>--}}
+{{--                <div class="conn-people">Ayının Gündemi</div>--}}
                 @if(!empty($news))
                 <a href="/news/{{$news->id}}" class="button-slide">
                     @endif
-                    <span class="btn-text">Daha Fazla</span>
+                    <span class="btn-text">Gündeme Git</span>
                     <span class="btn-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="10px">
                                 <path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.671,9.998 L12.997,9.998 L16.462,6.000 L5.000,6.000 L5.000,4.000 L16.462,4.000 L12.997,0.002 L16.671,0.002 L21.003,5.000 L16.671,9.998 ZM17.000,5.379 L17.328,5.000 L17.000,4.621 L17.000,5.379 ZM-0.000,4.000 L3.000,4.000 L3.000,6.000 L-0.000,6.000 L-0.000,4.000 Z" />

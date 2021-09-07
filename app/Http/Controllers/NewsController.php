@@ -85,7 +85,7 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::findOrFail($id);
-        return view('admin.activities.edit',compact('news'));
+        return view('admin.news.edit',compact('news'));
     }
 
     /**
@@ -133,8 +133,13 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($id)
     {
-        //
+        $news = News::destroy($id);
+        if ($news) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
     }
 }
