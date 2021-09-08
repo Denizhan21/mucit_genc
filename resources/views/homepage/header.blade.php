@@ -21,6 +21,9 @@
                                     <a href="{{route('project_view')}}" class="menu-link active">Projeler</a>
                                 </li>
                                 <li class="header-nav-item">
+                                    <a href="{{route('social')}}" class="menu-link active">Sosyal Medya</a>
+                                </li>
+                                <li class="header-nav-item">
                                     <a href="{{route('activity_view')}}" class="menu-link active">Duyurular</a>
                                 </li>
                                 <li class="header-nav-item">
@@ -30,6 +33,7 @@
                         </nav>
                     </div>
                     <div class="nav-item header-control">
+
                         @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
                             <div class="inline-item d-flex align-items-center">
                                 <div class="dropdown dropdown-cart">
@@ -252,10 +256,13 @@
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
-                                            @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+
+                                           @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img style="width: 44px;height: 44px" src="/{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}">
                                             @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img src="/homepage/media/figure/chat_5.jpg" alt="Chat">
+                                            @else
+
                                             @endif
                                                 <span class="acc-verified"><i class="icofont-check"></i></span>
                                         </span>
@@ -266,9 +273,17 @@
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="admin-options">
+
                                         @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
                                         @endif
+
+                                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
+                                            <li><a href="#">Projelerim</a></li>
+                                            <li><a href="{{route('rosette')}}">Rozetlerim</a></li>
+                                        @endif
+
+
                                         <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                     </ul>
                                 </div>
@@ -279,7 +294,7 @@
             </div>
         </header>
 
-@else
+    @else
 
         <header class="fixed-header">
             <div id="rt-sticky-placeholder"></div>
