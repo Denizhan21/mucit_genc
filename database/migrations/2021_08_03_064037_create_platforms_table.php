@@ -15,8 +15,8 @@ class CreatePlatformsTable extends Migration
     {
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('club_id')->unsigned();
-            $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('status')->nullable();
             $table->integer('authority')->nullable();
             $table->string('user_name')->nullable();
