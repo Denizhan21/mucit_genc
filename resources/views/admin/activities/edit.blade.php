@@ -4,7 +4,7 @@
         <div class="col-lg-12 col-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Etkinlik Ekle</h4>
+                    <h4 class="box-title">Duyuru Düzenle</h4>
                     <ul class="box-controls pull-right">
                         <li><a class="box-btn-close" href="#"></a></li>
                         <li><a class="box-btn-slide" href="#"></a></li>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="box-footer">
                     <a href="{{route('activities.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                    <button type="submit" class="btn btn-success pull-right">Etkinlik Düzenle</button>
+                    <button type="submit" class="btn btn-success pull-right">Duyuru Düzenle</button>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -70,7 +70,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Etkinlik Eklendi",
+            text:"Duyuru Düzenlendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -79,7 +79,7 @@
         @if (session('no'))
         swal({
             title:"Hata",
-            text:"Etkinlik Eklenemedi",
+            text:"Duyuru Düzenlenemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

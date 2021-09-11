@@ -6,7 +6,7 @@
             <div class="box">
 
                 <div class="box-header with-border">
-                    <h4 class="box-title">Haberler Tablosu</h4>
+                    <h4 class="box-title">Gündemler Tablosu</h4>
                 </div>
                 <div class="box-body no-padding">
                     <div class="table-responsive">
@@ -51,7 +51,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Haber Silindi",
+            text:"Gündem Silindi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -60,7 +60,7 @@
         @if (session('no'))
         swal({
             title:"Başarısız",
-            text:"Haber Silinemedi",
+            text:"Gündem Silinemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

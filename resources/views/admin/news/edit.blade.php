@@ -4,7 +4,7 @@
         <div class="col-lg-12 col-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">Haber Ekle</h4>
+                    <h4 class="box-title">Gündem Düzenle</h4>
                     <ul class="box-controls pull-right">
                         <li><a class="box-btn-close" href="#"></a></li>
                         <li><a class="box-btn-slide" href="#"></a></li>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="box-footer">
                     <a href="{{route('news.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                    <button type="submit" class="btn btn-success pull-right">Haber Ekle</button>
+                    <button type="submit" class="btn btn-success pull-right">Gündem Düzenle</button>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -56,7 +56,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Haber Eklendi",
+            text:"Gündem Düzenlendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -65,7 +65,7 @@
         @if (session('no'))
         swal({
             title:"Hata",
-            text:"Haber Eklenemedi",
+            text:"Gündem Düzenlenemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

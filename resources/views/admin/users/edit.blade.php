@@ -150,7 +150,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Kullanıcı Eklendi",
+            text:"Kullanıcı Düzenlendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
