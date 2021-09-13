@@ -34,7 +34,7 @@
                     </div>
                     <div class="nav-item header-control">
 
-                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
+                    {{--    @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
                             <div class="inline-item d-flex align-items-center">
                                 <div class="dropdown dropdown-cart">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        @endif--}}
                         <div class="inline-item">
                             <div class="dropdown dropdown-admin">
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -274,7 +274,7 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="admin-options">
 
-                                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
+                                       {{-- @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
                                         @endif
 
@@ -282,7 +282,7 @@
                                             <li><a href="#">Projelerim</a></li>
                                             <li><a href="{{route('rosette')}}">Rozetlerim</a></li>
                                         @endif
-
+--}}
 
                                         <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                     </ul>
