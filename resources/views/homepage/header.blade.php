@@ -257,13 +257,13 @@
                                     <span class="media">
                                         <span class="item-img">
 
-                                           @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+                                     {{--      @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img style="width: 44px;height: 44px" src="/{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}">
-                                            @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+                                            @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))--}}
                                                 <img src="/homepage/media/figure/chat_5.jpg" alt="Chat">
-                                            @else
+                                           {{-- @else
 
-                                            @endif
+                                            @endif--}}
                                                 <span class="acc-verified"><i class="icofont-check"></i></span>
                                         </span>
                                         <span class="media-body">
