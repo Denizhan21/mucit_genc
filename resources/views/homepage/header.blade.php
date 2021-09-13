@@ -5,7 +5,7 @@
                 <div class="navbar">
                     <div class="nav-item d-none d-sm-block">
                         <div class="header-logo">
-                            <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" alt="Cirkle"></a>
+                            <a href="{{route('homepage')}}"><img src="/homepage/media/logo.png" alt="Cirkle"></a>
                         </div>
                     </div>
                     <div class="nav-item nav-top-menu">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="nav-item header-control">
 
-                    {{--    @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
+                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='student')
                             <div class="inline-item d-flex align-items-center">
                                 <div class="dropdown dropdown-cart">
                                     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -250,20 +250,20 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif--}}
+                        @endif
                         <div class="inline-item">
                             <div class="dropdown dropdown-admin">
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
 
-                                     {{--      @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
+                                           @if(!empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img style="width: 44px;height: 44px" src="/{{\Illuminate\Support\Facades\Auth::user()->avatar}}" alt="{{\Illuminate\Support\Facades\Auth::user()->name}}">
-                                            @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))--}}
+                                            @elseif(empty(\Illuminate\Support\Facades\Auth::user()->avatar))
                                                 <img src="/homepage/media/figure/chat_5.jpg" alt="Chat">
-                                           {{-- @else
+                                            @else
 
-                                            @endif--}}
+                                            @endif
                                                 <span class="acc-verified"><i class="icofont-check"></i></span>
                                         </span>
                                         <span class="media-body">
@@ -274,7 +274,7 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="admin-options">
 
-                                       {{-- @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
+                                        @if(\Illuminate\Support\Facades\Auth::user()->authority=='admin' OR \Illuminate\Support\Facades\Auth::user()->authority=='teacher')
                                             <li><a href="{{route('admin.index')}}">Panele Git</a></li>
                                         @endif
 
@@ -282,7 +282,7 @@
                                             <li><a href="#">Projelerim</a></li>
                                             <li><a href="{{route('rosette')}}">Rozetlerim</a></li>
                                         @endif
---}}
+
 
                                         <li><a href="{{ route('homepage.logout') }}">Çıkış Yap</a></li>
                                     </ul>
@@ -303,7 +303,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="temp-logo">
-                                <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" alt="Logo"></a>
+                                <a href="{{route('homepage')}}"><img src="/homepage/media/logo.png" alt="Logo"></a>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-7 col-sm-7 col-8 d-flex justify-content-xl-start justify-content-center">
