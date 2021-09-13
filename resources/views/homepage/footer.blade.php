@@ -7,7 +7,7 @@
                 <div class="col">
                     <div class="footer-box">
                         <div class="footer-logo">
-                            <a href="{{route('homepage')}}"><img src="/homepage/media/logo_dark.png" alt="Logo"></a>
+                            <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" style="width: 150px;height: 49ox;" alt="Logo"></a>
                         </div>
                         <p>DigitalZone Acıbadem Okulları B2RT(Bilgisayar Bilimleri ve Robotik Teknolojiler) Ekibi ve Mucit Genç Ekibi tarafından yazılım ve uygulama kısmı ile tamamen özgün , 21.yy dijital yetkinliklerini öğrencilere kazandırmak amacı ile geliştirilmiş bir projedir.</p>
                     </div>

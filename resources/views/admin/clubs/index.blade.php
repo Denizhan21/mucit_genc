@@ -21,7 +21,7 @@
                                 <th>Kayıtlı Öğrenciler</th>
                                 <th>Gönderilen Projeler</th>
                                 <th>Rozetler</th>
-                                <th>Platform Bilgileri</th>
+{{--                                <th>Platform Bilgileri</th>--}}
                                 <th>Canlı Linkler</th>
                                 <th>Düzenle</th>
                                 <th>Sil</th>
@@ -38,7 +38,7 @@
                                     <td><a class="" href="{{route('club_user.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="" href="{{route('projects.index','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="" href="{{route('club_rosette','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
-                                    <td><a class="" href="{{route('club_platform','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
+{{--                                    <td><a class="" href="{{route('club_platform','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>--}}
                                     <td><a class="" href="{{route('club_link','club='.$clubs->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td><a class="btn btn-xs btn-warning" href="{{route('clubs.edit',$clubs->id)}}"><i class="fa fa-pencil-square-o"></i></a></td>
                                     <td>

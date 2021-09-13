@@ -30,6 +30,15 @@
                 </a>
             </li>
 
+            <li class="">
+                <a href="{{route('homepage')}}">
+                    <i class="fa fa-home"></i> <span>Siteye Git</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+            </li>
+
             @if(\Illuminate\Support\Facades\Auth::user()->authority == 'admin')
             <li class="treeview">
                 <a href="#">
