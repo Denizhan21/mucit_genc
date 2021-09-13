@@ -5,7 +5,7 @@
                 <div class="navbar">
                     <div class="nav-item d-none d-sm-block">
                         <div class="header-logo">
-                            <a href="{{route('homepage')}}"><img src="/homepage/media/logo.png" alt="Cirkle"></a>
+                            <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" alt="Cirkle"></a>
                         </div>
                     </div>
                     <div class="nav-item nav-top-menu">
@@ -303,7 +303,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="temp-logo">
-                                <a href="{{route('homepage')}}"><img src="/homepage/media/logo.png" alt="Logo"></a>
+                                <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" alt="Logo"></a>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-7 col-sm-7 col-8 d-flex justify-content-xl-start justify-content-center">
