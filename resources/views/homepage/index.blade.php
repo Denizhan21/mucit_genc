@@ -63,8 +63,8 @@
     <section class="section groups-popular">
         <div class="container">
             <div class="section-heading">
-                <h2 class="heading-title">Külüplerimiz</h2>
-                <p>Mucit Genç bünyesinde ki kulüpler ve kulüplerdeki öğrenciler ve onların projeleri. </p>
+                <h2 class="heading-title">"Sınıf ve Kulüpler"</h2>
+{{--                <p>Mucit Genç bünyesinde ki kulüpler ve kulüplerdeki öğrenciler ve onların projeleri. </p>--}}
             </div>
             <div class="row gutters-15 justify-content-center">
 

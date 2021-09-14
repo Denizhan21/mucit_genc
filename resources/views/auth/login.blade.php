@@ -43,7 +43,7 @@
         <div class="content-wrap">
             <div class="login-content">
                 <div class="item-logo">
-                    <a href="{{route('homepage')}}"><img src="/homepage/media/logo_large.png" alt="logo"></a>
+                    <a href="{{route('homepage')}}"><img src="/homepage/media/logo.png" style="width: 200px; height: 70px;" alt="logo"></a>
                 </div>
                 <div class="login-form-wrap">
                     <ul class="nav nav-tabs" role="tablist">
