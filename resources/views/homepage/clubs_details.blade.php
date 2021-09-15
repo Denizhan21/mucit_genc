@@ -505,12 +505,12 @@
                                                     @else
                                                         <fieldset id="emoji_area_{{$key}}" >
                                                             <input type="hidden" id="rateable_id_{{$key}}" name="rateable_id" value="{{$club_projects->id}}">
-                                                            <li><label class="like-button" for="{{$key+5}}"><input id="{{$key+5}}" type="radio" name="rateable_type" value="1" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
-                                                            <li><label class="like-button" for="{{$key+10}}"><input id="{{$key+10}}" type="radio" name="rateable_type" value="2" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
-                                                            <li><label class="like-button" for="{{$key+15}}"><input id="{{$key+15}}" type="radio" name="rateable_type" value="3" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
-                                                            <li><label class="like-button" for="{{$key+20}}"><input id="{{$key+20}}" type="radio" name="rateable_type" value="4" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
-                                                            <li><label class="like-button" for="{{$key+25}}"><input id="{{$key+25}}" type="radio" name="rateable_type" value="5" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
-                                                            <li><label class="like-button" for="{{$key+30}}"><input id="{{$key+30}}" type="radio" name="rateable_type" value="6" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+500000}}"><input id="{{$key+500000}}" type="radio" name="rateable_type" value="1" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+1000000}}"><input id="{{$key+1000000}}" type="radio" name="rateable_type" value="2" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+1500000}}"><input id="{{$key+1500000}}" type="radio" name="rateable_type" value="3" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+2000000}}"><input id="{{$key+2000000}}" type="radio" name="rateable_type" value="4" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+2500000}}"><input id="{{$key+2500000}}" type="radio" name="rateable_type" value="5" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+3000000}}"><input id="{{$key+3000000}}" type="radio" name="rateable_type" value="6" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
                                                             {{--                                                       <label  for="{{$key+35}}"><input class="rateable_id" id="{{$key+35}}" type="text" name="rateable_id" value="{{$club_projects->id}}" ></label>--}}
                                                         </fieldset>
                                                     @endif
@@ -645,6 +645,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
 
+
+        @if(!empty($rating))
         function rating_score ( ke ) {
 
             console.log(ke);
@@ -682,6 +684,8 @@
             } );
             return false;
         }
+        @endif
+
     </script>
 
 @endsection
