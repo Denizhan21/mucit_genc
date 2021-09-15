@@ -4,15 +4,27 @@
     <div class="main-footer">
         <div class="container">
             <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1">
-                <div class="col">
+                <div class="col-lg-3">
+                    <div class="footer-box">
+                        <div class="footer-logo">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
                     <div class="footer-box">
                         <div class="footer-logo">
                             <a href="{{route('homepage')}}"><img src="/homepage/media/zonelogo.jpg" style="width: 150px;height: 49ox;" alt="Logo"></a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-box">
+
                         <p>DigitalZone Acıbadem Okulları B2RT(Bilgisayar Bilimleri ve Robotik Teknolojiler) Ekibi ve Mucit Genç Ekibi tarafından yazılım ve uygulama kısmı ile tamamen özgün , 21.yy dijital yetkinliklerini öğrencilere kazandırmak amacı ile geliştirilmiş bir projedir.</p>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-lg-center">
+
+               {{-- <div class="col d-flex justify-content-lg-center">
                     <div class="footer-box">
                         <h3 class="footer-title">
                             Kullanışlı Linkler
@@ -57,7 +69,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
