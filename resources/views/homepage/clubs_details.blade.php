@@ -289,7 +289,6 @@
                             </div>
                             <div class="post-body">
                                 <p><b>{{$club_projects->name}}</b></p>
-                                <p><b>{{$club_projects->id}}</b></p>
                                 <p>{!! $club_projects->description !!}</p>
 
 
@@ -452,7 +451,7 @@
                                             @php
                                             $rating = \App\Rating::where('rateable_id','=',$club_projects->id)->get()
                                             @endphp
-                                            <div class="meta-text"><div id="total_rating">{{count($rating)}}</div></div>
+                                            <div class="meta-text"><div id="total_rating_{{$key}}">{{count($rating)}}</div></div>
                                         </div>
                                     </div>
                                     @php
@@ -473,9 +472,14 @@
 
                                                 $rating_login = \App\Rating::where('rateable_id','=',$club_projects->id)->where('user_id','=',$login)->first();
                                                 @endphp
+
+
+
                                                 <a href="#">
                                                     @if(empty($rating_login))
-                                                        <div id="user_rate_result"><i class="icofont-thumbs-up"></i></div>
+
+                                                        <div id="user_rate_result_{{$key}}"><i class="icofont-thumbs-up"></i></div>
+
                                                     @elseif($rating_login->rateable_type==1)
                                                         <img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">
                                                     @elseif($rating_login->rateable_type==2)
@@ -489,14 +493,18 @@
                                                     @elseif($rating_login->rateable_type==6)
                                                         <img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="Like">
                                                     @endif
+
                                                 </a>
+
+
+
                                                 <ul class="react-list">
 
                                                     @if(!empty($rating_login))
 
                                                     @else
-                                                        <fieldset id="emoji_area" >
-                                                            <input type="text" id="rateable_id_{{$key}}" name="rateable_id" value="{{$club_projects->id}}">
+                                                        <fieldset id="emoji_area_{{$key}}" >
+                                                            <input type="hidden" id="rateable_id_{{$key}}" name="rateable_id" value="{{$club_projects->id}}">
                                                             <li><label class="like-button" for="{{$key+5}}"><input id="{{$key+5}}" type="radio" name="rateable_type" value="1" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
                                                             <li><label class="like-button" for="{{$key+10}}"><input id="{{$key+10}}" type="radio" name="rateable_type" value="2" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
                                                             <li><label class="like-button" for="{{$key+15}}"><input id="{{$key+15}}" type="radio" name="rateable_type" value="3" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
@@ -633,7 +641,8 @@
 @endsection
 
 @section('js')
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
 
         function rating_score ( ke ) {
@@ -652,7 +661,7 @@
                 success : function ()
                 {
 
-                    document.getElementById('total_rating').innerHTML = {{count($rating)+1}};
+                    document.getElementById('total_rating_'+ke).innerHTML = {{count($rating)+1}};
 
                     if(rateable_type == 1) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">';
                     if(rateable_type == 2) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="celebrate">';
@@ -661,9 +670,9 @@
                     if(rateable_type == 5) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="insightful">';
                     if(rateable_type == 6) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="curious">';
 
-                    document.getElementById('user_rate_result').innerHTML = emoji;
+                    document.getElementById('user_rate_result_'+ke).innerHTML = emoji;
 
-                    document.getElementById('emoji_area').style.display = "none";
+                    document.getElementById('emoji_area_'+ke).style.display = "none";
 
                 },
                 error   : function ( xhr ) {

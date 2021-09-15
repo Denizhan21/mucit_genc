@@ -224,7 +224,7 @@
 {{--                                                </form>--}}
 
 
-                                                <fieldset id="emoji_area_update" onChange="return rating_score_update()">
+                                             {{--   <fieldset id="emoji_area_update" onChange="return rating_score_update()">
                                                     <li><label class="like-button" for="1"><input id="1" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}} ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
                                                     <li><label class="like-button" for="2"><input id="2" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}} ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
                                                     <li><label class="like-button" for="3"><input id="3" type="radio" name="rateable_type" value="3" {{$rating_login->rateable_type==3?'checked':''}} ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
@@ -232,7 +232,7 @@
                                                     <li><label class="like-button" for="5"><input id="5" type="radio" name="rateable_type" value="5" {{$rating_login->rateable_type==5?'checked':''}} ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
                                                     <li><label class="like-button" for="6"><input id="6" type="radio" name="rateable_type" value="6" {{$rating_login->rateable_type==6?'checked':''}} ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
                                                 </fieldset>
-
+--}}
 
                                             @else
 
@@ -488,7 +488,7 @@
 
    <script>
 
-       function rating_score_update ( txt_rating ) {
+  /*     function rating_score_update ( txt_rating ) {
 
            var rateable_type = $("input[name=rateable_type]:checked").val();
            $.ajax( {
@@ -523,7 +523,7 @@
            } );
            return false;
        }
-
+*/
 
 
 
