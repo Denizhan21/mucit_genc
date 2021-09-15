@@ -240,45 +240,34 @@
                                                         <div id="user_rate_result_{{$key}}"><i class="icofont-thumbs-up"></i></div>
 
                                                     @elseif($rating_login->rateable_type==1)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like"></div>
                                                     @elseif($rating_login->rateable_type==2)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="Like"></div>
                                                     @elseif($rating_login->rateable_type==3)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="Like"></div>
                                                     @elseif($rating_login->rateable_type==4)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/love.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/love.svg" alt="Like"></div>
                                                     @elseif($rating_login->rateable_type==5)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="Like"></div>
                                                     @elseif($rating_login->rateable_type==6)
-                                                        <img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="Like">
+                                                        <div id="user_rate_result_{{$key}}"><img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="Like"></div>
                                                     @endif
 
                                                 </a>
                                                 <ul class="react-list">
 
                                                     @if(!empty($rating_login))
-                                                      {{--  {!! Form::model($rating_login,['route'=>['like_send_update',$rating_login->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}
-                                                        <li><label class="like-button" for="{{$key+7}}"><input id="{{$key+7}}" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}}><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+14}}"><input id="{{$key+14}}" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}}><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+21}}"><input id="{{$key+21}}" type="radio" name="rateable_type" value="3" {{$rating_login->rateable_type==3?'checked':''}}><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+28}}"><input id="{{$key+28}}" type="radio" name="rateable_type" value="4" {{$rating_login->rateable_type==4?'checked':''}}><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+35}}"><input id="{{$key+35}}" type="radio" name="rateable_type" value="5" {{$rating_login->rateable_type==5?'checked':''}}><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+42}}"><input id="{{$key+42}}" type="radio" name="rateable_type" value="6" {{$rating_login->rateable_type==6?'checked':''}}><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
-                                                        <li><button class="btn btn-white" type="submit">Gönder</button></li>
-                                                        {!! Form::close() !!}--}}
+                                                        <fieldset id="emoji_area_update_{{$key}}">
+                                                            <li><label class="like-button" for="{{$key+500000}}"><input id="{{$key+500000}}" type="radio" name="rateable_type" value="1" {{$rating_login->rateable_type==1?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+1000000}}"><input id="{{$key+1000000}}" type="radio" name="rateable_type" value="2" {{$rating_login->rateable_type==2?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+1500000}}"><input id="{{$key+1500000}}" type="radio" name="rateable_type" value="3" {{$rating_login->rateable_type==3?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+2000000}}"><input id="{{$key+2000000}}" type="radio" name="rateable_type" value="4" {{$rating_login->rateable_type==4?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+2500000}}"><input id="{{$key+2500000}}" type="radio" name="rateable_type" value="5" {{$rating_login->rateable_type==5?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
+                                                            <li><label class="like-button" for="{{$key+3000000}}"><input id="{{$key+3000000}}" type="radio" name="rateable_type" value="6" {{$rating_login->rateable_type==6?'checked':''}} onclick="rating_score_update({{$rating_login->id}},{{$key}})" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
+                                                        </fieldset>
+
                                                     @else
-                                                       {{-- {!! Form::open(['route'=>['like_send'],'method'=>'POST','files'=>'true','class'=>'form-horizontal']) !!}
-                                                        <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                                        <input type="hidden" name="rateable_id" value="{{$club_projects->id}}">
-                                                        <input type="hidden" name="rating" value="1">
-                                                        <li><label class="like-button" for="{{$key+7}}"><input id="{{$key+7}}" type="radio" name="rateable_type" value="1" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+14}}"><input id="{{$key+14}}" type="radio" name="rateable_type" value="2" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+24}}"><input id="{{$key+21}}" type="radio" name="rateable_type" value="3" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+28}}"><input id="{{$key+28}}" type="radio" name="rateable_type" value="4" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+35}}"><input id="{{$key+35}}" type="radio" name="rateable_type" value="5" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
-                                                        <li><label class="like-button" for="{{$key+42}}"><input id="{{$key+42}}" type="radio" name="rateable_type" value="6" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
-                                                        <li><button class="btn btn-white" type="submit">Gönder</button></li>
-                                                        {!! Form::close() !!}--}}
+
                                                         <fieldset id="emoji_area_{{$key}}" >
                                                             <input type="hidden" id="rateable_id_{{$key}}" name="rateable_id" value="{{$club_projects->id}}">
                                                             <li><label class="like-button" for="{{$key+500000}}"><input id="{{$key+500000}}" type="radio" name="rateable_type" value="1" onclick="rating_score({{$key}})"><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
@@ -318,7 +307,43 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
+        function rating_score_update ( ke,ka ) {
 
+            var rateable_type = $("input[name=rateable_type]:checked").val();
+            var url = '{{ route("rating_send_update", ":id") }}';
+            url = url.replace(':id', ke );
+
+            $.ajax( {
+                type    : "GET",
+                data: {
+                    "rateable_type" : rateable_type,
+                    "_token": "{{ csrf_token() }}",
+                },
+                {{--url     : "{{route('rating_send_update',$projects->id)}}",--}}
+                url: url,
+                success : function ()
+                {
+
+
+                    if(rateable_type == 1) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">';
+                    if(rateable_type == 2) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="celebrate">';
+                    if(rateable_type == 3) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="support">';
+                    if(rateable_type == 4) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/love.svg" alt="love">';
+                    if(rateable_type == 5) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/insightful.svg" alt="insightful">';
+                    if(rateable_type == 6) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/curious.svg" alt="curious">';
+
+                    document.getElementById('user_rate_result_'+ka).innerHTML = emoji;
+
+                    document.getElementById('emoji_area_update'+ka).style.display = "none";
+
+                },
+                error   : function ( xhr ) {
+                    alert( "HATA" );
+                }
+
+            } );
+            return false;
+        }
 
         @if(!empty($rating))
         function rating_score ( ke ) {
