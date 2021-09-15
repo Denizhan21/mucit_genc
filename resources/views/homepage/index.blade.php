@@ -268,12 +268,12 @@
                                                                 <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                                                 <input type="hidden" name="rateable_id" value="{{$projects->id}}">
                                                                 <input type="hidden" name="rating" value="1">
-                                                                <li><label class="like-button" for="{{$key+60}}"><input id="{{$key+60}}" type="radio" name="rateable_type" value="1" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
-                                                                <li><label class="like-button" for="{{$key+120}}"><input id="{{$key+120}}" type="radio" name="rateable_type" value="2" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
-                                                                <li><label class="like-button" for="{{$key+180}}"><input id="{{$key+180}}" type="radio" name="rateable_type" value="3" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
-                                                                <li><label class="like-button" for="{{$key+240}}"><input id="{{$key+240}}" type="radio" name="rateable_type" value="4" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
-                                                                <li><label class="like-button" for="{{$key+300}}"><input id="{{$key+300}}" type="radio" name="rateable_type" value="5" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
-                                                                <li><label class="like-button" for="{{$key+360}}"><input id="{{$key+360}}" type="radio" name="rateable_type" value="6" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+5}}"><input id="{{$key+5}}" type="radio" name="rateable_type" value="1" ><img src="/homepage/media/figure/like.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+10}}"><input id="{{$key+10}}" type="radio" name="rateable_type" value="2" ><img src="/homepage/media/figure/celebrate.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+15}}"><input id="{{$key+15}}" type="radio" name="rateable_type" value="3" ><img src="/homepage/media/figure/support.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+20}}"><input id="{{$key+20}}" type="radio" name="rateable_type" value="4" ><img src="/homepage/media/figure/love.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+25}}"><input id="{{$key+25}}" type="radio" name="rateable_type" value="5" ><img src="/homepage/media/figure/insightful.svg" alt="Like"></label></li>
+                                                                <li><label class="like-button" for="{{$key+30}}"><input id="{{$key+30}}" type="radio" name="rateable_type" value="6" ><img src="/homepage/media/figure/curious.svg" alt="Like"></label></li>
                                                                 <li><button class="btn btn-white" type="submit">Gönder</button></li>
 {{--
                                                                 {!! Form::close() !!}
