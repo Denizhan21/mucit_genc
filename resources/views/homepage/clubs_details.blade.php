@@ -449,7 +449,10 @@
                                                     <img style="width: 24px;" src="/homepage/media/figure/curious.svg" alt="Like">
                                                 @endif
                                             </div>
-                                            <div class="meta-text"><div id="total_rating">{{count($rating = \App\Rating::where('rateable_id','=',$club_projects->id)->get())}}</div></div>
+                                            @php
+                                            $rating = \App\Rating::where('rateable_id','=',$club_projects->id)->get()
+                                            @endphp
+                                            <div class="meta-text"><div id="total_rating">{{count($rating)}}</div></div>
                                         </div>
                                     </div>
                                     @php
