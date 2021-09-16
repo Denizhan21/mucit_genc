@@ -38,7 +38,7 @@
 
                     <div class="form-group">
                         <label for="example_input_full_name">Kulüp Tanıtım Videosu/PDF si(Drive Linki Olarak Yükleyiniz):</label>
-                        <input id="name" type="text" class="form-control"  name="text" required>
+                        <input id="name" type="text" class="form-control"  name="text">
                     </div>
 
                     <div class="form-group">

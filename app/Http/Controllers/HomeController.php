@@ -56,6 +56,86 @@ class HomeController extends Controller
     }
 
 
+
+
+    public function activity_details($id)
+    {
+        $activity = Activity::findOrFail($id);
+
+        return view('homepage.activity_details',compact('activity'));
+    }
+
+    public function news_details($id)
+    {
+        $news = News::findOrFail($id);
+
+        return view('homepage.news_details',compact('news'));
+    }
+
+    public function projects_details($id)
+    {
+        $projects = Project::findOrFail($id);
+
+        $comment = Comment::where('project_id','=',$projects->id)->where('status','=','1')->get();
+
+        $rating = Rating::where('rateable_id','=',$projects->id)->get();
+
+        $reaction_1 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',1)->get();
+        $reaction_2 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',2)->get();
+        $reaction_3 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',3)->get();
+        $reaction_4 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',4)->get();
+        $reaction_5 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',5)->get();
+        $reaction_6 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',6)->get();
+        $reaction_7 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',7)->get();
+
+        $login = Auth::id();
+
+        $rating_login = Rating::where('rateable_id','=',$projects->id)->where('user_id','=',$login)->first();
+
+        $teacher_comments = Teacher_comment::where('project_id','=',$projects->id)->get();
+
+
+        return view('homepage.projects_details',compact('projects','comment','rating','rating_login','reaction_1','reaction_2','reaction_3','reaction_4','reaction_5','reaction_6','reaction_7','teacher_comments'));
+    }
+
+    public function club_view(Request $request)
+    {
+        $query = (new Club())->newQuery();
+
+        if ($request->input('name') != '') {
+            $query->where('name', 'like', "%$request->name%");
+            $name = $request->input('name');
+        } else {
+            $name = null;
+        }
+
+        if ($request->input('school_id') != '') {
+            $query->where('school_id', $request->input('school_id'));
+            $school_id = $request->input('school_id');
+        } else {
+            $school_id = null;
+        }
+
+        if ($request->input('teacher') != '') {
+            $query->where('teacher', $request->input('teacher'));
+            $teacher = $request->input('teacher');
+        } else {
+            $teacher = null;
+        }
+
+        $club_teacher =\App\User::where('authority','=','teacher')->get();
+
+        $school = \App\School::where('status','=','1')->get();
+
+        $count = $query->count();
+
+
+
+        $request_forms = $query->paginate(50)->appends(request()->query());
+
+        return view('homepage.club_view',compact('name','school_id','school','club_teacher','count','request_forms'));
+    }
+
     public function project_view(Request $request)
     {
         $query = (new Project)->newQuery()->where('status','1');
@@ -108,53 +188,6 @@ class HomeController extends Controller
 
 
         return view('homepage.project_view',compact('request_forms','count','order_field','order_type','name','clubs','order_club','project_user','user_id'));
-    }
-
-    public function activity_details($id)
-    {
-        $activity = Activity::findOrFail($id);
-
-        return view('homepage.activity_details',compact('activity'));
-    }
-
-    public function news_details($id)
-    {
-        $news = News::findOrFail($id);
-
-        return view('homepage.news_details',compact('news'));
-    }
-
-    public function projects_details($id)
-    {
-        $projects = Project::findOrFail($id);
-
-        $comment = Comment::where('project_id','=',$projects->id)->where('status','=','1')->get();
-
-        $rating = Rating::where('rateable_id','=',$projects->id)->get();
-
-        $reaction_1 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',1)->get();
-        $reaction_2 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',2)->get();
-        $reaction_3 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',3)->get();
-        $reaction_4 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',4)->get();
-        $reaction_5 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',5)->get();
-        $reaction_6 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',6)->get();
-        $reaction_7 = Rating::where('rateable_id','=',$projects->id)->where('rateable_type','=',7)->get();
-
-        $login = Auth::id();
-
-        $rating_login = Rating::where('rateable_id','=',$projects->id)->where('user_id','=',$login)->first();
-
-        $teacher_comments = Teacher_comment::where('project_id','=',$projects->id)->get();
-
-
-        return view('homepage.projects_details',compact('projects','comment','rating','rating_login','reaction_1','reaction_2','reaction_3','reaction_4','reaction_5','reaction_6','reaction_7','teacher_comments'));
-    }
-
-    public function club_view()
-    {
-        $club = Club::all();
-
-        return view('homepage.club_view',compact('club'));
     }
 
     public function teacher_comment_update($id)
@@ -405,6 +438,7 @@ class HomeController extends Controller
         $club = Club::where('code',$code)->firstOrFail();
         return view('homepage.club_join',compact('club'));
     }
+
 
     public function club_join_Store() {
 

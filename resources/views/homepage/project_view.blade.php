@@ -252,12 +252,9 @@
                     "rateable_type" : rateable_type,
                     "_token": "{{ csrf_token() }}",
                 },
-                {{--url     : "{{route('rating_send_update',$projects->id)}}",--}}
                 url: url,
                 success : function ()
                 {
-
-
                     if(rateable_type == 1) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/like.svg" alt="Like">';
                     if(rateable_type == 2) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/celebrate.svg" alt="celebrate">';
                     if(rateable_type == 3) var emoji = '<img style="width: 20px;" src="/homepage/media/figure/support.svg" alt="support">';

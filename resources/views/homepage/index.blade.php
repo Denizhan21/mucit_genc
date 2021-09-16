@@ -73,7 +73,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="groups-box">
                         <div class="item-img">
-                            <img style="width: 285px;height: 185px" src="/{{$clubs->logo}}" alt="Groups">
+                            <img style="width: 285px;height: 185px" src="/homepage/media/black.jpg" alt="Groups">
                         </div>
                         <div class="item-content">
                             <h3 class="item-title"><a href="/clubs/{{$clubs->id}}">{{$clubs->name}}</a></h3>

@@ -490,7 +490,7 @@
 
                    document.getElementById('user_rate_result').innerHTML = emoji;
 
-                   document.getElementById('emoji_area_update').style.display = "none";
+                   // document.getElementById('emoji_area_update').style.display = "none";
 
                },
                error   : function ( xhr ) {

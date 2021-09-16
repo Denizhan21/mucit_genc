@@ -201,6 +201,8 @@
                             </li>
                         </ul>
                         <hr>
+
+                       @if(!empty($clubs->text))
                         <div class="widget-heading">
                             <h4><small>Kulüp Tanıtımı</small></h4>
                         </div>
@@ -219,6 +221,8 @@
 
                             <iframe src="{{$clubs->text}}" frameborder="0" width="710" height="400"></iframe>
                         @endif
+                        @endif
+
                     </div>
 
 
