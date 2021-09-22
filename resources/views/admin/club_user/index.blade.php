@@ -9,7 +9,7 @@
                     <h4 class="box-title">Kulüp Öğrencileri</h4>
                     <div class="pull-right">
 
-                        <button type="button" class="btn btn-primary">Öğrenci Ekle</button>
+                        <a href="{{route('club_student_create','club='.$_GET['club'])}}" type="button" class="btn btn-primary">Öğrenci Ekle</a>
 
                     </div>
                 </div>
@@ -23,6 +23,7 @@
                                 <th>Şube</th>
                                 <th>Projeleri</th>
                                 <th>Ödevleri</th>
+                                <th>Platform Bilgileri</th>
                                 <th>Kulüpten Çıkar</th>
                             </tr>
                             @foreach($club_student  as $key=>$club_students)
@@ -33,8 +34,9 @@
                                     <td>{{$club_students->student->branch}}</td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                     <td>
-                                        {!! Form::open(['method'=>'DELETE','action'=>['ClubController@destroy',$club_students->id],'style'=>'display:inline']) !!}
+                                        {!! Form::open(['method'=>'DELETE','action'=>['ClubUserController@destroy',$club_students->id],'style'=>'display:inline']) !!}
                                         <button onclick="return confirm('Emin misin?')" class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
                                         {!! Form::close() !!}
                                     </td>
@@ -60,7 +62,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Kulüp Silindi",
+            text:"Öğrenci Silindi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -69,7 +71,7 @@
         @if (session('no'))
         swal({
             title:"Başarısız",
-            text:"Kulüp Silinemedi",
+            text:"Öğrenci Silinemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Club;
+use App\Club_user;
 use App\Contact;
 use App\Link;
 use App\Platform;
 use App\Project;
 use App\Rosette;
 use App\Rosette_student;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -472,5 +474,36 @@ class AdminController extends Controller
         }else {
             return redirect()->back()->with('no', 'no');
         }
+    }
+
+    public function club_student_create() {
+        $user_id = User::where('authority','=','student')->get();
+        return view('admin.club_user.create',compact('user_id'));
+    }
+
+    public function club_student_store() {
+        $club_user = new Club_user();
+        $club_user->club_id = request('club_id');
+        $club_user->user_id = request('user_id');
+
+        $club = Club::where('id',$club_user->club_id)->firstOrFail();
+
+        $user = User::where('id',$club_user->user_id)->firstOrFail();
+
+        $user_club = Club_user::where('club_id',$club->id)->where('user_id',$user->id)->first();
+
+        if (empty($user_club)) {
+            $club_user->save();
+        }else {
+            return redirect()->back()->with('nosd','nosd');
+        }
+
+
+        if ($club_user) {
+            return redirect()->back()->with('alert','alert');
+        }else{
+            return redirect()->back()->with('no','no');
+        }
+
     }
 }

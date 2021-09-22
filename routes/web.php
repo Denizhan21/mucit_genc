@@ -25,6 +25,10 @@ Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
     //Kulüp Öğrenci İşlemleri
     Route::resource('club_user','ClubUserController');
 
+    //Kulübe Öğrenci Ekleme İşlemleri
+    Route::get('club_student_create','AdminController@club_student_create')->name('club_student_create');
+    Route::post('club_student_store','AdminController@club_student_store')->name('club_student_store');
+
     //Duyuru İşlemleri
     Route::resource('activities','ActivityController');
 

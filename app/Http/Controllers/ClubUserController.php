@@ -80,8 +80,13 @@ class ClubUserController extends Controller
      * @param  \App\Club_user  $club_user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Club_user $club_user)
+    public function destroy($id)
     {
-        //
+        $club_user = Club_user::destroy($id);
+        if ($club_user) {
+            return redirect()->back()->with('alert', 'alert');
+        }else {
+            return redirect()->back()->with('no', 'no');
+        }
     }
 }
