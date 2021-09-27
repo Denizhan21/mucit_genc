@@ -49,12 +49,12 @@ class AdminController extends Controller
         return view('admin.clubs.links',compact('club_link','project_club'));
     }
 
-    public function club_platform()
+   /* public function club_platform()
     {
         $club_platform = Platform::where('club_id','=',$_GET['club'])->get();
         $project_club = Club::where('id','=',$_GET['club'])->get();
         return view('admin.clubs.platform',compact('club_platform','project_club'));
-    }
+    }*/
 
     public function rosette_delete($id) {
         $rosette = Rosette_student::destroy($id);
@@ -79,8 +79,7 @@ class AdminController extends Controller
 
     public function platform_create()
     {
-        $club_id = $_GET['club'];
-        return view('admin.clubs.platform_create',compact('club_id'));
+        return view('admin.club_user.platform_create');
     }
 
     public function rosette_add()
@@ -153,7 +152,7 @@ class AdminController extends Controller
         $platform = new Platform();
         $platform->user_name = request('user_name');
         $platform->link = request('link');
-        $platform->club_id = request('club_id');
+        $platform->user_id = request('user_id');
         $platform->password = request('password');
         $platform->status = request('status');
         $platform->authority = request('authority');
@@ -290,7 +289,7 @@ class AdminController extends Controller
 
     public function platform_details($id) {
         $platform = Platform::findOrFail($id);
-        return view('admin.clubs.platform_details',compact('platform'));
+        return view('admin.club_user.platform_details',compact('platform'));
     }
 
     public function all_project(Request $request)
@@ -506,4 +505,12 @@ class AdminController extends Controller
         }
 
     }
+
+    public function platform() {
+
+        $platform = Platform::where('user_id','=',$_GET['user'])->get();
+
+        return view('admin.club_user.platform',compact('platform'));
+    }
+
 }

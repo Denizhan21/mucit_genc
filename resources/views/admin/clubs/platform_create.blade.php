@@ -1,3 +1,4 @@
+{{--
 @extends('admin.template')
 @section('icerik')
     <div class="row">
@@ -12,8 +13,10 @@
                     </ul>
                 </div>
                 {!! Form::open(['route'=>['platform_store'],'method'=>'POST','files'=>'true','class'=>'form-horizontal']) !!}
-                {{--    <form method="POST" action="{{route('schools.store')}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxekle();" id="ajax-form">
-                        {{csrf_field()}}--}}
+                --}}
+{{--    <form method="POST" action="{{route('schools.store')}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxekle();" id="ajax-form">
+                        {{csrf_field()}}--}}{{--
+
                 <div class="box-body">
                     <div class="form-group">
                         <label for="example_input_full_name">Kullanıcı Adı:</label>
@@ -68,7 +71,9 @@
                     <button type="submit" class="btn btn-success pull-right">Platform Ekle</button>
                 </div>
                 {!! Form::close() !!}
-                {{--                </form>--}}
+                --}}
+{{--                </form>--}}{{--
+
             </div>
         </div>
     </div>
@@ -97,3 +102,4 @@
         @endif
     </script>
 @endsection
+--}}

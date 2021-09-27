@@ -1,4 +1,3 @@
-{{--
 @extends('admin.template')
 @section('icerik')
     <div class="row">
@@ -13,11 +12,9 @@
                     </ul>
                 </div>
                 {!! Form::model($platform,['route'=>['platform_update',$platform->id],'method'=>'PUT','files'=>'true','class'=>'form-horizontal']) !!}
-                --}}
-{{--                <form method="PUT" action="{{route('schools.update',$school->id)}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxekle();" id="ajax-form">--}}{{--
+{{--                <form method="PUT" action="{{route('schools.update',$school->id)}}" class="form-horizontal" enctype="multipart/form-data" onsubmit="return ajaxekle();" id="ajax-form">--}}
 
-                --}}
-{{--                    {{csrf_field()}}--}}{{--
+                    {{csrf_field()}}
 
                 <div class="box-body">
                     <div class="form-group">
@@ -72,12 +69,11 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="{{route('schools.index')}}" style="color: white" class="btn btn-danger">Geri Dön</a>
-                    <button type="submit" class="btn btn-success pull-right">Okul Düzenle</button>
+                    <a href="{{route('platform','user='.$platform->user_id)}}" style="color: white" class="btn btn-danger">Geri Dön</a>
+                    <button type="submit" class="btn btn-success pull-right">Platform Düzenle</button>
                 </div>
                 {!! Form::close() !!}
-                --}}
-{{--                </form>--}}{{--
+{{--                </form>--}}
 
             </div>
         </div>
@@ -90,7 +86,7 @@
         @if (session('alert'))
         swal({
             title:"Başarılı",
-            text:"Okul Düzenlendi",
+            text:"Platform Düzenlendi",
             type: "success",
             timer:2000,
             showConfirmButton: false
@@ -99,7 +95,7 @@
         @if (session('no'))
         swal({
             title:"Hata",
-            text:"Okul Düzenlenemedi",
+            text:"Platform Düzenlenemedi",
             type: "warning",
             timer:2000,
             showConfirmButton: false
@@ -107,4 +103,3 @@
         @endif
     </script>
 @endsection
---}}

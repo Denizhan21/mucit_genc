@@ -61,11 +61,11 @@ Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
 
 
     //Kulüp Platform Bilgileri
-    Route::get('club_platform','AdminController@club_platform')->name('club_platform');
+/*    Route::get('club_platform','AdminController@club_platform')->name('club_platform');
     Route::get('platform_details/{id}','AdminController@platform_details')->name('platform_details');
     Route::get('platform_create','AdminController@platform_create')->name('platform_create');
     Route::post('platform_store', 'AdminController@platform_store')->name('platform_store');
-    Route::put('platform_update/{id}','AdminController@platform_update')->name('platform_update');
+    Route::put('platform_update/{id}','AdminController@platform_update')->name('platform_update');*/
 
     //Kulüp Canlı Link Bilgileri
     Route::get('club_link','AdminController@club_link')->name('club_link');
@@ -74,6 +74,12 @@ Route::group(['prefix'=>'mct','middleware'=>['teacher']],function () {
     Route::post('link_store', 'AdminController@link_store')->name('link_store');
     Route::put('link_update/{id}','AdminController@link_update')->name('link_update');
 
+    //Öğrenci Platform İşlemleri
+    Route::get('platform','AdminController@platform')->name('platform');
+    Route::get('platform_create','AdminController@platform_create')->name('platform_create');
+    Route::post('platform_store', 'AdminController@platform_store')->name('platform_store');
+    Route::get('platform_details/{id}','AdminController@platform_details')->name('platform_details');
+    Route::put('platform_update/{id}','AdminController@platform_update')->name('platform_update');
 
 
 });
@@ -222,3 +228,17 @@ Route::get('project_onaykaldir/{id}','AdminController@project_onaykaldir')->name
 Route::get('deneme','HomeController@deneme')->name('deneme');
 
 Route::post('deneme_gonder','HomeController@deneme_gonder')->name('deneme_gonder');
+
+
+/*javascript: let crns=[10708, 10709, 10712, 10617, 10637, 10707, 10160, 10103];
+let inputs = document.querySelectorAll("input[type=number]");
+for (let i = 0; i < crns.length; i++) {
+    inputs[i].value = crns[i];
+    inputs[i].dispatchEvent(new Event('input'));
+}
+let form = document.querySelector('form');
+form.dispatchEvent(new Event('submit'));
+new Promise((resolve) => setTimeout(resolve, 100)).then(() => {
+    let button = document.querySelector('.card-footer button.btn-success');
+    button.dispatchEvent(new Event('click'));
+})*/

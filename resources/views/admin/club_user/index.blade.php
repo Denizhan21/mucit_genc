@@ -34,7 +34,7 @@
                                     <td>{{$club_students->student->branch}}</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td><a class="" href="{{route('platform','user='.$club_students->id)}}"><span class="label label-success">Git</span></a></td>
                                     <td>
                                         {!! Form::open(['method'=>'DELETE','action'=>['ClubUserController@destroy',$club_students->id],'style'=>'display:inline']) !!}
                                         <button onclick="return confirm('Emin misin?')" class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
